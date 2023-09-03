@@ -143,17 +143,17 @@ def get_readable_message():
         elapsed = time() - download.extra_details['startTime']
 
         msg += f"\n<b>File Name</b> » <i>{escape(f'{download.name()}')}</i>\n\n" if elapsed <= config_dict['AUTO_DELETE_MESSAGE_DURATION'] else ""
-        msg += f"• <b>{download.status()}</b>"
+        msg += f"⌯ <b>{download.status()}</b>"
 
         if download.status() not in [MirrorStatus.STATUS_SEEDING, MirrorStatus.STATUS_PAUSED, MirrorStatus.STATUS_QUEUEDL,
                                      MirrorStatus.STATUS_QUEUEUP, MirrorStatus.STATUS_LOCAL]:
 
             msg += f" 🚀 Speed {download.speed()}"
-            msg += f"\n┎•❆《 {get_progress_bar_string(download.progress())} 》﹝ {download.progress()}﹞"
-            msg += f"\n┠•⍟ Done         {download.processed_bytes()} of {download.size()}"
-            msg += f"\n┠•⌥ ETA           {download.eta()}"
-            msg += f"\n┠•☋ Time Run  {get_readable_time(elapsed)}"
-            msg += f"\n┠•⌘ Engine      {download.engine}"
+            msg += f"\n┎•❆﹝{get_progress_bar_string(download.progress())}﹞⌇{download.progress()}"
+            msg += f"\n┠•⍟ Done » {download.processed_bytes()} of {download.size()}"
+            msg += f"\n┠•⌥ ETA » {download.eta()}"
+            msg += f"\n┠•☋ Time Run » {get_readable_time(elapsed)}"
+            msg += f"\n┠•⌘ Engine » {download.engine}"
 
             if hasattr(download, 'playList'):
                 try:
@@ -164,24 +164,24 @@ def get_readable_message():
 
             if hasattr(download, 'seeders_num'):
                 try:
-                    msg += f"\n┠•☍ Seeders   {download.seeders_num()}"
-                    msg += f"\n┠•⥿ Leechers  {download.leechers_num()}"
+                    msg += f"\n┠•☍ Seeders » {download.seeders_num()}"
+                    msg += f"\n┠•⥿ Leechers » {download.leechers_num()}"
                 except:
                     pass
 
         elif download.status() == MirrorStatus.STATUS_SEEDING:
-            msg += f"\n•⌼ Size      {download.size()}"
-            msg += f"\n•🚀Speed     {download.upload_speed()}"
-            msg += f"\n•⥣ Uploaded  {download.uploaded_bytes()}"
-            msg += f"\n•☍ Ratio     {download.ratio()}"
-            msg += f"\n•🧭 Time     {download.seeding_time()}"
+            msg += f"\n•⌼ Size » {download.size()}"
+            msg += f"\n•🚀Speed » {download.upload_speed()}"
+            msg += f"\n•⥣ Uploaded » {download.uploaded_bytes()}"
+            msg += f"\n•☍ Ratio » {download.ratio()}"
+            msg += f"\n•🧭 Time » {download.seeding_time()}"
         else:
             msg += f"\n•⌹ Size      {download.size()}"
 
         if config_dict['DELETE_LINKS']:
-            msg += f"\n┠• ☋ Task           {download.extra_details['mode']}"
+            msg += f"\n┠• ☋ Task » {download.extra_details['mode']}"
         else:
-            msg += f"\n• <☋ Task  <a href='{download.message.link}'>{download.extra_details['mode']}</a>"
+            msg += f"\n• <☋ Task » <a href='{download.message.link}'>{download.extra_details['mode']}</a>"
 
         msg += f"\n┠•⌼ <code>User  </code> {tag}"
         msg += f"\n┖⚠️ /{BotCommands.CancelMirror}_{download.gid()}\n\n"
