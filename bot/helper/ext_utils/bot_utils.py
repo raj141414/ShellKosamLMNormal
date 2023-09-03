@@ -149,11 +149,11 @@ def get_readable_message():
                                      MirrorStatus.STATUS_QUEUEUP, MirrorStatus.STATUS_LOCAL]:
 
             msg += f" 🚀 Speed {download.speed()}"
-            msg += f"\n┎•❆ {get_progress_bar_string(download.progress())} » {download.progress()}"
-            msg += f"\n┠•⍟ Done      {download.processed_bytes()} of {download.size()}"
-            msg += f"\n┠•⌥ ETA       {download.eta()}"
+            msg += f"\n┎•❆《 {get_progress_bar_string(download.progress())} 》﹝ {download.progress()}﹞"
+            msg += f"\n┠•⍟ Done         {download.processed_bytes()} of {download.size()}"
+            msg += f"\n┠•⌥ ETA          {download.eta()}"
             msg += f"\n┠•☋ Time Run  {get_readable_time(elapsed)}"
-            msg += f"\n┠•⌘ Engine    {download.engine}"
+            msg += f"\n┠•⌘ Engine      {download.engine}"
 
             if hasattr(download, 'playList'):
                 try:
@@ -179,9 +179,9 @@ def get_readable_message():
             msg += f"\n• <code>⌹Size     </code> {download.size()}"
 
         if config_dict['DELETE_LINKS']:
-            msg += f"\n┠• <code>☋ Task     </code> {download.extra_details['mode']}"
+            msg += f"\n┠• ☋ Task    {download.extra_details['mode']}"
         else:
-            msg += f"\n• <code>☋ Task     </code> <a href='{download.message.link}'>{download.extra_details['mode']}</a>"
+            msg += f"\n• <☋ Task   <a href='{download.message.link}'>{download.extra_details['mode']}</a>"
 
         msg += f"\n┠•⌼ <code>User     </code> {tag}"
         msg += f"\n┖⚠️ /{BotCommands.CancelMirror}_{download.gid()}\n\n"
