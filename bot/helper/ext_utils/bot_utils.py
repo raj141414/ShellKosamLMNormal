@@ -149,11 +149,11 @@ def get_readable_message():
                                      MirrorStatus.STATUS_QUEUEUP, MirrorStatus.STATUS_LOCAL]:
 
             msg += f" » {download.speed()}"
-            msg += f"\n• {get_progress_bar_string(download.progress())} » {download.progress()}"
-            msg += f"\n• <code>Done     </code>» {download.processed_bytes()} of {download.size()}"
-            msg += f"\n• <code>ETA      </code>» {download.eta()}"
-            msg += f"\n• <code>Active   </code>» {get_readable_time(elapsed)}"
-            msg += f"\n• <code>Engine   </code>» {download.engine}"
+            msg += f"\n┎•❆ {get_progress_bar_string(download.progress())} » {download.progress()}"
+            msg += f"\n┠•⍟ Done     </code>» {download.processed_bytes()} of {download.size()}"
+            msg += f"\n┠•⌥ ETA      </code>» {download.eta()}"
+            msg += f"\n┠•☋ Active   </code>» {get_readable_time(elapsed)}"
+            msg += f"\n┠•⌘ Engine   </code>» {download.engine}"
 
             if hasattr(download, 'playList'):
                 try:
@@ -164,8 +164,8 @@ def get_readable_message():
 
             if hasattr(download, 'seeders_num'):
                 try:
-                    msg += f"\n• <code>Seeders  </code>» {download.seeders_num()}"
-                    msg += f"\n• <code>Leechers </code>» {download.leechers_num()}"
+                    msg += f"\n┠•☍ <code>Seeders  </code>» {download.seeders_num()}"
+                    msg += f"\n┠•⥿ <code>Leechers </code>» {download.leechers_num()}"
                 except:
                     pass
 
@@ -179,12 +179,12 @@ def get_readable_message():
             msg += f"\n• <code>Size     </code>» {download.size()}"
 
         if config_dict['DELETE_LINKS']:
-            msg += f"\n• <code>Task     </code>» {download.extra_details['mode']}"
+            msg += f"\n┠• <code>Task     </code>» {download.extra_details['mode']}"
         else:
             msg += f"\n• <code>Task     </code>» <a href='{download.message.link}'>{download.extra_details['mode']}</a>"
 
-        msg += f"\n• <code>User     </code>» {tag}"
-        msg += f"\n⚠️ /{BotCommands.CancelMirror}_{download.gid()}\n\n"
+        msg += f"\n┠•⌼ <code>User     </code>» {tag}"
+        msg += f"\n┖⚠️ /{BotCommands.CancelMirror}_{download.gid()}\n\n"
 
     if len(msg) == 0:
         return None, None
