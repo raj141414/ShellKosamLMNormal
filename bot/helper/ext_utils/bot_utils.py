@@ -148,12 +148,12 @@ def get_readable_message():
         if download.status() not in [MirrorStatus.STATUS_SEEDING, MirrorStatus.STATUS_PAUSED, MirrorStatus.STATUS_QUEUEDL,
                                      MirrorStatus.STATUS_QUEUEUP, MirrorStatus.STATUS_LOCAL]:
 
-            msg += f" » {download.speed()}"
+            msg += f" 🚀 Speed {download.speed()}"
             msg += f"\n┎•❆ {get_progress_bar_string(download.progress())} » {download.progress()}"
-            msg += f"\n┠•⍟ Done     </code>» {download.processed_bytes()} of {download.size()}"
-            msg += f"\n┠•⌥ ETA      </code>» {download.eta()}"
-            msg += f"\n┠•☋ Active   </code>» {get_readable_time(elapsed)}"
-            msg += f"\n┠•⌘ Engine   </code>» {download.engine}"
+            msg += f"\n┠•⍟ Done      {download.processed_bytes()} of {download.size()}"
+            msg += f"\n┠•⌥ ETA       {download.eta()}"
+            msg += f"\n┠•☋ Time Run  {get_readable_time(elapsed)}"
+            msg += f"\n┠•⌘ Engine    {download.engine}"
 
             if hasattr(download, 'playList'):
                 try:
@@ -164,26 +164,26 @@ def get_readable_message():
 
             if hasattr(download, 'seeders_num'):
                 try:
-                    msg += f"\n┠•☍ <code>Seeders  </code>» {download.seeders_num()}"
-                    msg += f"\n┠•⥿ <code>Leechers </code>» {download.leechers_num()}"
+                    msg += f"\n┠•☍ Seeders   {download.seeders_num()}"
+                    msg += f"\n┠•⥿ Leechers  {download.leechers_num()}"
                 except:
                     pass
 
         elif download.status() == MirrorStatus.STATUS_SEEDING:
-            msg += f"\n• <code>Size     </code>» {download.size()}"
-            msg += f"\n• <code>Speed    </code>» {download.upload_speed()}"
-            msg += f"\n• <code>Uploaded </code>» {download.uploaded_bytes()}"
-            msg += f"\n• <code>Ratio    </code>» {download.ratio()}"
-            msg += f"\n• <code>Time     </code>» {download.seeding_time()}"
+            msg += f"\n•⌼ Size      {download.size()}"
+            msg += f"\n•🚀Speed     {download.upload_speed()}"
+            msg += f"\n•⥣ Uploaded  {download.uploaded_bytes()}"
+            msg += f"\n•☍ Ratio     {download.ratio()}"
+            msg += f"\n•🧭 Time     {download.seeding_time()}"
         else:
-            msg += f"\n• <code>Size     </code>» {download.size()}"
+            msg += f"\n• <code>⌹Size     </code> {download.size()}"
 
         if config_dict['DELETE_LINKS']:
-            msg += f"\n┠• <code>Task     </code>» {download.extra_details['mode']}"
+            msg += f"\n┠• <code>☋ Task     </code> {download.extra_details['mode']}"
         else:
-            msg += f"\n• <code>Task     </code>» <a href='{download.message.link}'>{download.extra_details['mode']}</a>"
+            msg += f"\n• <code>☋ Task     </code> <a href='{download.message.link}'>{download.extra_details['mode']}</a>"
 
-        msg += f"\n┠•⌼ <code>User     </code>» {tag}"
+        msg += f"\n┠•⌼ <code>User     </code> {tag}"
         msg += f"\n┖⚠️ /{BotCommands.CancelMirror}_{download.gid()}\n\n"
 
     if len(msg) == 0:
@@ -215,10 +215,10 @@ def get_readable_message():
         buttons.ibutton("⫸", "status nex")
         button = buttons.build_menu(3)
     msg += "____________________________"
-    msg += f"\n<b>DISK</b>: <code>{get_readable_file_size(disk_usage(config_dict['DOWNLOAD_DIR']).free)}</code>"
-    msg += f" | <b>UPTM</b>: <code>{get_readable_time(time() - botStartTime)}</code>"
-    msg += f"\n<b>DL</b>: <code>{get_readable_file_size(dl_speed)}/s</code>"
-    msg += f" | <b>UL</b>: <code>{get_readable_file_size(up_speed)}/s</code>"
+    msg += f"\n<b>✇ DISK</b>: {get_readable_file_size(disk_usage(config_dict['DOWNLOAD_DIR']).free)}</code>"
+    msg += f" | <b>🝋 Uptime</b>: {get_readable_time(time() - botStartTime)}</code>"
+    msg += f"\n<b>⥥ Down</b>: {get_readable_file_size(dl_speed)}/s</code>"
+    msg += f" | <b>⥣ Up</b>: {get_readable_file_size(up_speed)}/s</code>"
     remaining_time = 86400 - (time() - botStartTime)
     res_time = '⚠️ ANYTIME ⚠️' if remaining_time <= 0 else get_readable_time(remaining_time)
     if remaining_time <= 3600:
