@@ -151,9 +151,9 @@ def get_readable_message():
            
             msg += f"\n┎•❆﹝{get_progress_bar_string(download.progress())}﹞⌇{download.progress()}"
             msg += f"\n┠•⍟ Done » {download.processed_bytes()} of {download.size()}"
-            msg += f"\n┠•🚀 Speed {download.speed()}"
+            msg += f"\n┠•🚀 Speed » {download.speed()}"
             msg += f"\n┠•⌥ ETA » {download.eta()}"
-            msg += f"\n┠•☋ Time Run » {get_readable_time(elapsed)}"
+            msg += f"┠•☋ Elapsed » {get_readable_time(elapsed)}"
             msg += f"\n┠•⌘ Engine » {download.engine}"
 
             if hasattr(download, 'playList'):
@@ -184,7 +184,7 @@ def get_readable_message():
         else:
             msg += f"\n• <☋ Task » <a href='{download.message.link}'>{download.extra_details['mode']}</a>"
 
-        msg += f"\n┠•⌼ <code>User  </code> {tag}"
+        msg += f"\n┠•⌼ User » </code> {tag}"
         msg += f"\n┖⚠️ /{BotCommands.CancelMirror}_{download.gid()}\n\n"
 
     if len(msg) == 0:
@@ -215,7 +215,7 @@ def get_readable_message():
         buttons.ibutton(f"{PAGE_NO}/{PAGES}", "status ref")
         buttons.ibutton("⫸", "status nex")
         button = buttons.build_menu(3)
-    msg += "____________________________"
+    msg += "BOT STATS"
     msg += f"\n<b>✇ DISK</b>: {get_readable_file_size(disk_usage(config_dict['DOWNLOAD_DIR']).free)}</code>"
     msg += f" | <b>🝋 Uptime</b>: {get_readable_time(time() - botStartTime)}</code>"
     msg += f"\n<b>⥥ Down</b>: {get_readable_file_size(dl_speed)}/s</code>"
