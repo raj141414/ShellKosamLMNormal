@@ -149,7 +149,7 @@ def get_readable_message():
                                      MirrorStatus.STATUS_QUEUEUP, MirrorStatus.STATUS_LOCAL]:
 
            
-            msg += f"\n┎•❆﹝{get_progress_bar_string(download.progress())}"
+            msg += f"\n┎•❆﹝{get_progress_bar_string(download.progress())}﹞"
             msg += f"\n┠•⍟ Done » {download.processed_bytes()} of {download.size()} | {download.progress()}"
             msg += f"\n┠•🚀 Speed » {download.speed()}"
             msg += f"\n┠•⌥ ETA » {download.eta()}"
@@ -216,7 +216,7 @@ def get_readable_message():
         buttons.ibutton(f"{PAGE_NO}/{PAGES}", "status ref")
         buttons.ibutton("⫸", "status nex")
         button = buttons.build_menu(3)
-    msg += "❆  ﹝BOT STATICS﹞"
+    msg += f"\n "❆  ﹝BOT STATICS﹞"
     msg += f"\n<b>✇ DISK</b>: {get_readable_file_size(disk_usage(config_dict['DOWNLOAD_DIR']).free)}</code>"
     msg += f" | <b>🝋 Uptime</b>: {get_readable_time(time() - botStartTime)}</code>"
     msg += f"\n<b>⥥ Down</b>: {get_readable_file_size(dl_speed)}/s</code>"
