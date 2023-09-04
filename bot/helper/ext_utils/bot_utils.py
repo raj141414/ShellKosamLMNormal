@@ -182,7 +182,7 @@ def get_readable_message():
         if config_dict['DELETE_LINKS']:
             msg += f"\n┠• ☋ Task » {download.extra_details['mode']}"
         else:
-            msg += f"\n• <☋ Task » <a href='{download.message.link}'>{download.extra_details['mode']}</a>" msg += f"\n┠•⌼ User » </code> {tag}"
+            msg += f"\n┠•☋ Task » <a href='{download.message.link}'>{download.extra_details['mode']}</a>" msg += f"\n┠•⌼ User » </code> {tag}"
         msg += f"\n┖⌀ /{BotCommands.CancelMirror}_{download.gid()}\n\n"
 
     if len(msg) == 0:
