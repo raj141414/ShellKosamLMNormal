@@ -149,8 +149,8 @@ def get_readable_message():
                                      MirrorStatus.STATUS_QUEUEUP, MirrorStatus.STATUS_LOCAL]:
 
            
-            msg += f"\n┎•❆﹝{get_progress_bar_string(download.progress())} | {download.progress()}"
-            msg += f"\n┠•⍟ Done » {download.processed_bytes()} of {download.size()}"
+            msg += f"\n┎•❆﹝{get_progress_bar_string(download.progress())}"
+            msg += f"\n┠•⍟ Done » {download.processed_bytes()} of {download.size()} | {download.progress()}"
             msg += f"\n┠•🚀 Speed » {download.speed()}"
             msg += f"\n┠•⌥ ETA » {download.eta()}"
             msg += f"┠•☋ Elapsed » {get_readable_time(elapsed)}"
