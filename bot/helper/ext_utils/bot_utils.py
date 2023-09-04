@@ -181,7 +181,7 @@ def get_readable_message():
 
         if config_dict['DELETE_LINKS']:
             msg += f"\n┠• ☋ Task » {download.extra_details['mode']}"    
-       else:
+        else:
             msg += f"\n• <code>Task     </code>» <a href='{download.message.link}'>{download.extra_details['mode']}</a>"
 
         msg += f"\n• <code>User     </code>» {tag}"
