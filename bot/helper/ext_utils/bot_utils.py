@@ -171,21 +171,21 @@ def get_readable_message():
                     pass
 
         elif download.status() == MirrorStatus.STATUS_SEEDING:
-            msg += f"\n•⌼ Size: {download.size()}"
-            msg += f"\n•🚀Speed: {download.upload_speed()}"
-            msg += f"\n•⥣ Uploaded: {download.uploaded_bytes()}"
-            msg += f"\n•☍ Ratio: {download.ratio()}"
-            msg += f"\n•🧭 Time: {download.seeding_time()}"
+            msg += f"\n┠•⌼ Size: {download.size()}"
+            msg += f"\n┠•🚀Speed: {download.upload_speed()}"
+            msg += f"\n┠•⥣ Uploaded: {download.uploaded_bytes()}"
+            msg += f"\n┠•☍ Ratio: {download.ratio()}"
+            msg += f"\n┠•🧭 Time: {download.seeding_time()}"
         else:
             msg += f"\n•⌹ Size      {download.size()}"
 
         if config_dict['DELETE_LINKS']:
             msg += f"\n┠• ☋ Task: {download.extra_details['mode']}"    
         else:
-            msg += f"\n• <code>Task     </code>» <a href='{download.message.link}'>{download.extra_details['mode']}</a>"
+            msg += f"\n┠• <code>Task     </code>» <a href='{download.message.link}'>{download.extra_details['mode']}</a>"
             
-        msg += f"\n• <code>User     </code>» {tag}"
-        msg += f"\n⚠️ /{BotCommands.CancelMirror}_{download.gid()}\n\n"
+        msg += f"\n┠•User     </code>» {tag}"
+        msg += f"\n┠•⚠️ /{BotCommands.CancelMirror}_{download.gid()}\n\n"
        
     if len(msg) == 0:
         return None, None
