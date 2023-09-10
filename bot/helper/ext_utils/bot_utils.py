@@ -114,13 +114,15 @@ async def get_telegraph_list(telegraph_content):
 
 
 def get_progress_bar_string(pct):
-    if isinstance(pct, str):
-        pct = float(pct.strip('%'))
+    pct = float(str(pct).strip('%'))
     p = min(max(pct, 0), 100)
-    cFull = int(p // 10)
-    p_str = '▰' * cFull
-    p_str += '═' * (10 - cFull)
-    return f"{p_str}"
+    cFull = int(p // 8)
+    cPart = int(p % 8 - 1)
+    p_str = '■' * cFull
+    if cPart >= 0:
+        p_str += ['▤', '▥', '▦', '▧', '▨', '▩', '■'][cPart]
+    p_str += '□' * (12 - cFull)
+    return f"[{p_str}]"
 
 
 def get_readable_message():
