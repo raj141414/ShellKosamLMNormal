@@ -121,7 +121,7 @@ def get_progress_bar_string(pct):
     p_str = '▰' * cFull
     if cPart >= 0:
         p_str += ['◬', '◭', '☐', '◩', '◧', '■'][cPart]
-    p_str += '▱' * (10 - cFull) 
+    p_str += '▱' * (12 - cFull) 
     return f"[{p_str}]"
 
 
@@ -217,9 +217,9 @@ def get_readable_message():
         button = buttons.build_menu(3)
     msg += "____________________________"
     msg += f"\n<b>✇ DISK</b>: {get_readable_file_size(disk_usage(config_dict['DOWNLOAD_DIR']).free)}</code>"
-    msg += f" | <b>🝋 Uptime</b>: {get_readable_time(time() - botStartTime)}</code>"
+    msg += f" ║ <b>🝋 Uptime</b>: {get_readable_time(time() - botStartTime)}</code>"
     msg += f"\n<b>⥥ Down</b>: {get_readable_file_size(dl_speed)}/s</code>"
-    msg += f" | <b>⥣ Up</b>: {get_readable_file_size(up_speed)}/s</code>"
+    msg += f" ║ <b>⥣ Up</b>: {get_readable_file_size(up_speed)}/s</code>"
     remaining_time = 86400 - (time() - botStartTime)
     res_time = '⚠️ ANYTIME ⚠️' if remaining_time <= 0 else get_readable_time(remaining_time)
     if remaining_time <= 3600:
