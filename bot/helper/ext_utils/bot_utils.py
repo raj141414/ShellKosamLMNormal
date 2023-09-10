@@ -122,7 +122,7 @@ def get_progress_bar_string(pct):
     if cPart >= 0:
         p_str += ['▁', '▂', '▃', '▄', '▅', '▆', '▇'][cPart]
     p_str += '▱' * (12 - cFull)
-    return f"[{p_str}]
+   return f"{p_str}"
 
 
 def get_readable_message():
