@@ -184,8 +184,8 @@ def get_readable_message():
         else:
             msg += f"\n• <code>Task     </code>» <a href='{download.message.link}'>{download.extra_details['mode']}</a>"
             
-          msg += f"\n• <code>User     </code>» {tag}"
-          msg += f"\n⚠️ /{BotCommands.CancelMirror}_{download.gid()}\n\n"
+        msg += f"\n• <code>User     </code>» {tag}"
+        msg += f"\n⚠️ /{BotCommands.CancelMirror}_{download.gid()}\n\n"
        
     if len(msg) == 0:
         return None, None
