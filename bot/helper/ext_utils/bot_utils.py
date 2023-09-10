@@ -119,7 +119,7 @@ def get_progress_bar_string(pct):
     p = min(max(pct, 0), 100)
     cFull = int(p // 10)
     p_str = '▰' * cFull
-    p_str += '▱' * (10 - cFull)
+    p_str += '═' * (10 - cFull)
     return f"{p_str}"
 
 
@@ -150,11 +150,10 @@ def get_readable_message():
 
            
             msg += f"\n┎•❆﹝{get_progress_bar_string(download.progress())}﹞"
-            msg += f"\n┠•⍟ Done » {download.processed_bytes()} of {download.size()} |﹝ {download.progress()}﹞"
-            msg += f"\n┠•🚀 Speed » {download.speed()}"
-            msg += f"\n┠•⌥ ETA » {download.eta()}"
-            msg += f"| ☋ Elapsed » {get_readable_time(elapsed)}"
-            msg += f"\n┠•⌘ Engine » {download.engine}"
+            msg += f"\n┠•⍟ Done: {download.processed_bytes()} of {download.size()}|﹝{download.progress()}﹞"
+            msg += f"\n┠•🚀 Speed: {download.speed()}"
+            msg += f"\n┠•⌥ ETA: {download.eta()} | ☋ Elapsed: {get_readable_time(elapsed)}"
+            msg += f"\n┠•⌘ Engine: {download.engine}"
 
             if hasattr(download, 'playList'):
                 try:
@@ -165,8 +164,7 @@ def get_readable_message():
 
             if hasattr(download, 'seeders_num'):
                 try:
-                    msg += f"\n┠•☍ Seeders » {download.seeders_num()}"
-                    msg += f"\n┠•⥿ Leechers » {download.leechers_num()}"
+                    msg += f"\n┠•☍ Seeders » {download.seeders_num()}┠•⥿ Leechers » {download.leechers_num()}"            
                 except:
                     pass
 
