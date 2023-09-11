@@ -71,7 +71,7 @@ async def stats(_, message):
     UMT = 'Unlimited' if config_dict['USER_MAX_TASKS'] == '' else config_dict['USER_MAX_TASKS']
     BMT = 'Unlimited' if config_dict['QUEUE_ALL'] == '' else config_dict['QUEUE_ALL']
 
-    stats = f'<b><i><u>» Meta Bot Statistics</u></i></b>\n\n'\
+    stats = f'<b>» Meta Bot Statistics</u></i></b>\n\n'\
             f'<b><i><u>⌰ Repo Info</u></i></b>\n' \
             f'<b>┌» Updated : </b> {last_commit}</code>\n' \
             f'<b>├» Version : </b> {version}</code>\n' \
