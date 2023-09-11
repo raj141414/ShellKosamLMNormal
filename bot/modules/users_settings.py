@@ -101,7 +101,7 @@ async def get_user_settings(from_user):
     text = f"""
 <u>ℹ User Settings of {name}</u>
 
-❆TG Premium Status:</code> <b>{IS_PREMIUM_USER}</b>
+❆TG Premium Status : </code> <b>{IS_PREMIUM_USER}</b>
 ┌» Rclone Config : </code> <b>{rccmsg}</b>
 ├» Leech Type : </code> <b>{ltype}</b>
 ├» Leech Prefix : </code> <b>{escape(lprefix)}</b>
