@@ -99,20 +99,19 @@ async def get_user_settings(from_user):
     buttons.ibutton("Close", f"userset {user_id} close")
 
     text = f"""
-<u>🜛 User Settings of {name}</u>
+<u>ℹ User Settings of {name}</u>
 
-TG Premium Status:</code> <b>{IS_PREMIUM_USER}</b>
-User Dump        :</code> <b>{user_dump}</b>
-
-Leech Type       :</code> <b>{ltype}</b>
-Leech Prefix     :</code> <b>{escape(lprefix)}</b>
-Leech Split Size :</code> <b>{split_size}</b>
-Equal Splits     :</code> <b>{equal_splits}</b>
-Thumbnail        :</code> <b>{thumbmsg}</b>
-Media Group      :</code> <b>{media_group}</b>
-YT-DLP Options   :</code> <b>{escape(ytopt)}</b>
-Rclone Config    :</code> <b>{rccmsg}</b>
-Remove Unwanted  :</code> <b>{escape(lremname)}</b>
+❆TG Premium Status:</code> <b>{IS_PREMIUM_USER}</b>
+┌» Rclone Config : </code> <b>{rccmsg}</b>
+├» Leech Type : </code> <b>{ltype}</b>
+├» Leech Prefix : </code> <b>{escape(lprefix)}</b>
+├» Leech Split Size : </code> <b>{split_size}</b>
+├» User Dump : </code> <b>{user_dump}</b>
+├» Equal Splits : </code> <b>{equal_splits}</b>
+├» Thumbnail : </code> <b>{thumbmsg}</b>
+├» Media Group : </code> <b>{media_group}</b>
+├» YT-DLP Options : </code> <b>{escape(ytopt)}</b>
+└» Remove Unwanted : </code> <b>{escape(lremname)}</b>
 """
     return text, buttons.build_menu(2)
 
