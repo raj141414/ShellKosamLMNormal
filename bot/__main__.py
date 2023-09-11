@@ -92,18 +92,18 @@ async def stats(_, message):
             f'<b>└» Allocated : </b> {get_readable_file_size(swap.total)}</code> | <b>Free : </b> {get_readable_file_size(swap.free)}</code>\n\n' \
             f'<b>┌» DISK : </b> {get_progress_bar_string(disk)} {disk}%</code>\n' \
             f'<b>├» Drive In Use : </b> {used}</code> [{disk}%]\n' \
-            f'<b>└» Total : </b> {total}</code> | <b>Free:</b> <code>{free}</code>\n\n' \
+            f'<b>└» Total : </b> {total}</code> | <b>Free : </b> {free}</code>\n\n' \
             f'<b>⥣ UL : </b> {sent}</code> | <b>⥥ DL:</b> {recv}</code>\n\n' \
             f'<b> Bot Limits</u></i></b>\n' \
-            f'<code>┌» Torrent   : {TOR}</code> <b>GB</b>\n' \
-            f'<code>├» G-Drive   : {GDL}</code> <b>GB</b>\n' \
-            f'<code>├» Yt-Dlp    : {YTD}</code> <b>GB</b>\n' \
-            f'<code>├» Direct    : {DIR}</code> <b>GB</b>\n' \
-            f'<code>├» Clone     : {CLL}</code> <b>GB</b>\n' \
-            f'<code>├» Leech     : {TGL}</code> <b>GB</b>\n' \
-            f'<code>├» MEGA      : {MGA}</code> <b>GB</b>\n' \
-            f'<code>├» User Tasks: {UMT}</code>\n' \
-            f'<code>└» Bot Tasks : {BMT}</code>'
+            f'┌» Torrent   : {TOR}</code> <b>GB</b>\n' \
+            f'├» G-Drive   : {GDL}</code> <b>GB</b>\n' \
+            f'├» Yt-Dlp    : {YTD}</code> <b>GB</b>\n' \
+            f'├» Direct    : {DIR}</code> <b>GB</b>\n' \
+            f'├» Clone     : {CLL}</code> <b>GB</b>\n' \
+            f'├» Leech     : {TGL}</code> <b>GB</b>\n' \
+            f'├» MEGA      : {MGA}</code> <b>GB</b>\n' \
+            f'├» User Tasks: {UMT}</code>\n' \
+            f'└» Bot Tasks : {BMT}</code>'
     reply_message = await sendMessage(message, stats)
     await auto_delete_message(message, reply_message)
 
@@ -126,10 +126,10 @@ async def start(_, message):
     elif config_dict['DM_MODE']:
         start_string = 'Bot Started.\n' \
                        'Now I can send your stuff here.\n' \
-                       'Owner: @metaverseiam'
+                       'Owner: @imthemetaverse'
     else:
         start_string = 'Sorry, you cant use me here!\n' \
-                       'By @metaverseiam.\n' \
+                       'By @imthemetaverse.\n' \
                        'Thank You'
     await sendMessage(message, start_string)
 
