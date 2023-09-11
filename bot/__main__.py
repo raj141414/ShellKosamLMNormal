@@ -94,16 +94,16 @@ async def stats(_, message):
             f'<b>├» Drive In Use : </b> {used}</code> [{disk}%]\n' \
             f'<b>└» Total : </b> {total}</code> | <b>Free:</b> <code>{free}</code>\n\n' \
             f'<b>⥣ UL : </b> {sent}</code> | <b>⥥ DL:</b> {recv}</code>\n\n' \
-            f'<b><i><u>Bot Limits</u></i></b>\n' \
-            f'<code>Torrent   : {TOR}</code> <b>GB</b>\n' \
-            f'<code>G-Drive   : {GDL}</code> <b>GB</b>\n' \
-            f'<code>Yt-Dlp    : {YTD}</code> <b>GB</b>\n' \
-            f'<code>Direct    : {DIR}</code> <b>GB</b>\n' \
-            f'<code>Clone     : {CLL}</code> <b>GB</b>\n' \
-            f'<code>Leech     : {TGL}</code> <b>GB</b>\n' \
-            f'<code>MEGA      : {MGA}</code> <b>GB</b>\n' \
-            f'<code>User Tasks: {UMT}</code>\n' \
-            f'<code>Bot Tasks : {BMT}</code>'
+            f'<b> Bot Limits</u></i></b>\n' \
+            f'<code>┌» Torrent   : {TOR}</code> <b>GB</b>\n' \
+            f'<code>├» G-Drive   : {GDL}</code> <b>GB</b>\n' \
+            f'<code>├» Yt-Dlp    : {YTD}</code> <b>GB</b>\n' \
+            f'<code>├» Direct    : {DIR}</code> <b>GB</b>\n' \
+            f'<code>├» Clone     : {CLL}</code> <b>GB</b>\n' \
+            f'<code>├» Leech     : {TGL}</code> <b>GB</b>\n' \
+            f'<code>├» MEGA      : {MGA}</code> <b>GB</b>\n' \
+            f'<code>├» User Tasks: {UMT}</code>\n' \
+            f'<code>└» Bot Tasks : {BMT}</code>'
     reply_message = await sendMessage(message, stats)
     await auto_delete_message(message, reply_message)
 
