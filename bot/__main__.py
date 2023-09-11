@@ -72,28 +72,28 @@ async def stats(_, message):
     BMT = 'Unlimited' if config_dict['QUEUE_ALL'] == '' else config_dict['QUEUE_ALL']
 
     stats = f'<b>» Meta Bot Statistics</u></i></b>\n\n'\
-            f'<b><i><u>⌰ Repo Info</u></i></b>\n' \
+            f'<b>⌰ Repo Info</u></i></b>\n' \
             f'<b>┌» Updated : </b> {last_commit}</code>\n' \
             f'<b>├» Version : </b> {version}</code>\n' \
             f'<b>└»Change Log : </b> {change_log}</code>\n\n' \
-            f'<b><i><u>⌆ Bot Info</u></i></b>\n' \
-            f'<b>SYS UP:</b> <code>{sysTime}</code>\n' \
-            f'<b>BOT UP:</b> <code>{botTime}</code>\n' \
-            f'<b>BOT Restart:</b> <code>{res_time}</code>\n\n' \
-            f'<b>CPU:</b> <code>{get_progress_bar_string(cpuUsage)} {cpuUsage}%</code>\n' \
-            f'<b>CPU Total Core(s):</b> <code>{cpu_count(logical=True)}</code>\n' \
-            f'<b>P-Core(s):</b> <code>{cpu_count(logical=False)}</code> | <b>V-Core(s):</b> <code>{v_core}</code>\n' \
-            f'<b>Frequency:</b> <code>{cpu_freq(percpu=False).current / 1000:.2f} GHz</code>\n\n' \
-            f'<b>RAM:</b> <code>{get_progress_bar_string(mem_p)} {mem_p}%</code>\n' \
-            f'<b>RAM In Use:</b> <code>{get_readable_file_size(memory.used)}</code> [{mem_p}%]\n' \
-            f'<b>Total:</b> <code>{get_readable_file_size(memory.total)}</code> | <b>Free:</b> <code>{get_readable_file_size(memory.available)}</code>\n\n' \
-            f'<b>SWAP:</b> <code>{get_progress_bar_string(swap.percent)} {swap.percent}%</code>\n' \
-            f'<b>SWAP In Use:</b> <code>{get_readable_file_size(swap.used)}</code> [{swap.percent}%]\n' \
-            f'<b>Allocated</b> <code>{get_readable_file_size(swap.total)}</code> | <b>Free:</b> <code>{get_readable_file_size(swap.free)}</code>\n\n' \
-            f'<b>DISK:</b> <code>{get_progress_bar_string(disk)} {disk}%</code>\n' \
-            f'<b>Drive In Use:</b> <code>{used}</code> [{disk}%]\n' \
-            f'<b>Total:</b> <code>{total}</code> | <b>Free:</b> <code>{free}</code>\n\n' \
-            f'<b>UL:</b> <code>{sent}</code> | <b>DL:</b> <code>{recv}</code>\n\n' \
+            f'<b>⌆ Bot Info</u></i></b>\n' \
+            f'<b>┌» SYS UP : </b> {sysTime}</code>\n' \
+            f'<b>├» BOT UP : </b> {botTime}</code>\n' \
+            f'<b>└» BOT Restart : </b> {res_time}</code>\n\n' \
+            f'<b>┌» CPU : </b> {get_progress_bar_string(cpuUsage)} {cpuUsage}%</code>\n' \
+            f'<b>├» CPU Total Core(s) : </b> {cpu_count(logical=True)}</code>\n' \
+            f'<b>├» P-Core(s) : </b> {cpu_count(logical=False)}</code> | <b>V-Core(s):</b> <code>{v_core}</code>\n' \
+            f'<b>└» Frequency:</b> {cpu_freq(percpu=False).current / 1000:.2f} GHz</code>\n\n' \
+            f'<b>┌» RAM : </b> {get_progress_bar_string(mem_p)} {mem_p}%</code>\n' \
+            f'<b>├» RAM In Use : </b> {get_readable_file_size(memory.used)}</code> [{mem_p}%]\n' \
+            f'<b>└» Total : </b> {get_readable_file_size(memory.total)}</code> | <b>Free : </b> {get_readable_file_size(memory.available)}</code>\n\n' \
+            f'<b>┌» SWAP : </b> {get_progress_bar_string(swap.percent)} {swap.percent}%</code>\n' \
+            f'<b>├» SWAP In Use : </b> {get_readable_file_size(swap.used)}</code> [{swap.percent}%]\n' \
+            f'<b>└» Allocated : </b> {get_readable_file_size(swap.total)}</code> | <b>Free : </b> {get_readable_file_size(swap.free)}</code>\n\n' \
+            f'<b>┌» DISK : </b> {get_progress_bar_string(disk)} {disk}%</code>\n' \
+            f'<b>├» Drive In Use : </b> {used}</code> [{disk}%]\n' \
+            f'<b>└» Total : </b> {total}</code> | <b>Free:</b> <code>{free}</code>\n\n' \
+            f'<b>⥣ UL : </b> {sent}</code> | <b>⥥ DL:</b> {recv}</code>\n\n' \
             f'<b><i><u>Bot Limits</u></i></b>\n' \
             f'<code>Torrent   : {TOR}</code> <b>GB</b>\n' \
             f'<code>G-Drive   : {GDL}</code> <b>GB</b>\n' \
