@@ -71,14 +71,14 @@ async def stats(_, message):
     UMT = 'Unlimited' if config_dict['USER_MAX_TASKS'] == '' else config_dict['USER_MAX_TASKS']
     BMT = 'Unlimited' if config_dict['QUEUE_ALL'] == '' else config_dict['QUEUE_ALL']
 
-    stats = f'<b><i><u>Zee Bot Statistics</u></i></b>\n\n'\
-            f'<b><i><u>Repo Info</u></i></b>\n' \
-            f'<b>Updated:</b> <code>{last_commit}</code>\n' \
-            f'<b>Version:</b> <code>{version}</code>\n' \
-            f'<b>Change Log:</b> <code>{change_log}</code>\n\n' \
-            f'<b><i><u>Bot Info</u></i></b>\n' \
-            f'<b>SYS UPTM:</b> <code>{sysTime}</code>\n' \
-            f'<b>BOT UPTM:</b> <code>{botTime}</code>\n' \
+    stats = f'<b><i><u>» Meta Bot Statistics</u></i></b>\n\n'\
+            f'<b><i><u>⌰ Repo Info</u></i></b>\n' \
+            f'<b>┌» Updated : </b> {last_commit}</code>\n' \
+            f'<b>├» Version : </b> {version}</code>\n' \
+            f'<b>└»Change Log : </b> {change_log}</code>\n\n' \
+            f'<b><i><u>⌆ Bot Info</u></i></b>\n' \
+            f'<b>SYS UP:</b> <code>{sysTime}</code>\n' \
+            f'<b>BOT UP:</b> <code>{botTime}</code>\n' \
             f'<b>BOT Restart:</b> <code>{res_time}</code>\n\n' \
             f'<b>CPU:</b> <code>{get_progress_bar_string(cpuUsage)} {cpuUsage}%</code>\n' \
             f'<b>CPU Total Core(s):</b> <code>{cpu_count(logical=True)}</code>\n' \
