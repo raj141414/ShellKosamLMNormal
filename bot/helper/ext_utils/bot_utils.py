@@ -152,7 +152,7 @@ def get_readable_message():
                                      MirrorStatus.STATUS_QUEUEUP, MirrorStatus.STATUS_LOCAL]:
 
            
-            msg += f"\n┎•╠ {get_progress_bar_string(download.progress())}╣{download.progress()}"
+            msg += f"\n┎•»{get_progress_bar_string(download.progress())}{download.progress()}"
             msg += f"\n┠•⍟ Done: {download.processed_bytes()} of {download.size()}"
             msg += f"\n┠•⌥ ETA: {download.eta()} ║ ☋ Elapsed: {get_readable_time(elapsed)}"
             msg += f"\n┠•⌘ Engine: {download.engine}"
@@ -175,7 +175,7 @@ def get_readable_message():
             msg += f"\n┠•🚀Speed: {download.upload_speed()}"
             msg += f"\n┠•⥣ Uploaded: {download.uploaded_bytes()}"
             msg += f"\n┠•☍ Ratio: {download.ratio()}"
-            msg += f"\n┠•🧭 Time: {download.seeding_time()}"
+            msg += f"\n┠•◕ Time: {download.seeding_time()}"
         else:
             msg += f"\n•⌹ Size      {download.size()}"
 
@@ -184,8 +184,8 @@ def get_readable_message():
         else:
             msg += f"\n┠• <code>Task     </code>» <a href='{download.message.link}'>{download.extra_details['mode']}</a>"
             
-        msg += f"\n┠•☃ User </code>: {tag}"
-        msg += f"\n┖•⌀ /{BotCommands.CancelMirror}_{download.gid()}\n\n"
+        msg += f"\n┠•☺ User </code>: {tag}"
+        msg += f"\n┖•✘ /{BotCommands.CancelMirror}_{download.gid()}\n\n"
        
     if len(msg) == 0:
         return None, None
