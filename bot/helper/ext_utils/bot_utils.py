@@ -31,17 +31,17 @@ PAGES = 1
 PAGE_NO = 1
 
 class MirrorStatus:
-    STATUS_UPLOADING = "Uploading"
-    STATUS_DOWNLOADING = "Downloading"
-    STATUS_CLONING = "Cloning"
+    STATUS_UPLOADING = "Uploading..."
+    STATUS_DOWNLOADING = "Downloading..."
+    STATUS_CLONING = "Cloning..."
     STATUS_QUEUEDL = "Queued Download"
     STATUS_QUEUEUP = "Queued Upload"
     STATUS_PAUSED = "Paused"
     STATUS_ARCHIVING = "Archiving"
-    STATUS_EXTRACTING = "Extracting"
-    STATUS_SPLITTING = "Spliting"
-    STATUS_CHECKING = "CheckingUp"
-    STATUS_SEEDING = "Seeding"
+    STATUS_EXTRACTING = "Extracting..."
+    STATUS_SPLITTING = "Splitting..."
+    STATUS_CHECKING = "CheckingUp..."
+    STATUS_SEEDING = "Seeding..."
     STATUS_LOCAL = "Local"
 
 class setInterval:
@@ -117,12 +117,9 @@ def get_progress_bar_string(pct):
     if isinstance(pct, str):
         pct = float(pct.strip('%'))
     p = min(max(pct, 0), 100)
-    cFull = int(p // 8)
-    cPart = int(p % 8 - 1)
-    p_str = '▰' * cFull
-    if cPart >= 0:
-        p_str += ['─', '░', '░', '▒', '▓', '▓',][cPart]
-    p_str += '▱' * (10 - cFull)
+    cFull = int(p // 10)
+    p_str = '▓' * cFull
+    p_str += '░' * (10 - cFull)
     return f"{p_str}"
 
 
@@ -145,47 +142,51 @@ def get_readable_message():
 
         elapsed = time() - download.extra_details['startTime']
 
-        msg += f"\n<b>File Name</b> » <i>{escape(f'{download.name()}')}</i>\n\n" if elapsed <= config_dict['AUTO_DELETE_MESSAGE_DURATION'] else ""
-        msg += f"⌯ <b>{download.status()}</b> ║ 🚀Speed: {download.speed()}"
+        msg += f"\n<b>File Name</b> <i>{escape(f'{download.name()}')}</i>\n\n" if elapsed <= config_dict['AUTO_DELETE_MESSAGE_DURATION'] else ""
+            msg += f"┎ <b>{download.status()}</b>"
 
         if download.status() not in [MirrorStatus.STATUS_SEEDING, MirrorStatus.STATUS_PAUSED, MirrorStatus.STATUS_QUEUEDL,
                                      MirrorStatus.STATUS_QUEUEUP, MirrorStatus.STATUS_LOCAL]:
 
            
-            msg += f"\n┎•»{get_progress_bar_string(download.progress())}{download.progress()}"
-            msg += f"\n┠•⍟ Done: {download.processed_bytes()} of {download.size()}"
-            msg += f"\n┠•⌥ ETA: {download.eta()} ║ ☋ Elapsed: {get_readable_time(elapsed)}"
-            msg += f"\n┠•⌘ Engine: {download.engine}"
+            msg += f"\n├{get_progress_bar_string(download.progress())}{download.progress()}"
+            msg += f"\n├ Processed: {download.processed_bytes()}"
+            msg += f"\n├ Total Size: {download.size()}"
+            msg += f"\n├ Speed: {download.speed()}"
+            msg += f"\n├ ETA: {download.eta()}"
+            msg += f"\n├ Elapsed: {get_readable_time(elapsed)}"
+            msg += f"\n├ Engine: {download.engine}"
 
             if hasattr(download, 'playList'):
                 try:
                     if playlist:=download.playList():
-                        msg += f"\n┠• YT Count </code>» {playlist}"
+                        msg += f"\n├ YT Count </code>» {playlist}"
                 except:
                     pass
 
             if hasattr(download, 'seeders_num'):
                 try:
-                    msg += f"\n┠•☍ Seeders» {download.seeders_num()} ║⥿ Leechers» {download.leechers_num()}"            
+                    msg += f"\n├ Seeders: {download.seeders_num()}"
+                    msg += f"\n├ Leechers: {download.leechers_num()}"            
                 except:
                     pass
 
         elif download.status() == MirrorStatus.STATUS_SEEDING:
-            msg += f"\n┠•⌼ Size: {download.size()}"
-            msg += f"\n┠•🚀Speed: {download.upload_speed()}"
+            msg += f"\n├ Size: {download.size()}"
+            msg += f"\n├ Speed: {download.upload_speed()}"
             msg += f"\n┠•⥣ Uploaded: {download.uploaded_bytes()}"
-            msg += f"\n┠•☍ Ratio: {download.ratio()}"
-            msg += f"\n┠•◕ Time: {download.seeding_time()}"
+            msg += f"\n├ Ratio: {download.ratio()}"
+            msg += f"\n├ Time: {download.seeding_time()}"
         else:
-            msg += f"\n•⌹ Size      {download.size()}"
+            msg += f"\n├ Size: {download.size()}"
 
         if config_dict['DELETE_LINKS']:
-            msg += f"\n┠• ☋ Task: {download.extra_details['mode']}"    
+            msg += f"\n├ Task: {download.extra_details['mode']}"    
         else:
-            msg += f"\n┠• <code>Task     </code>» <a href='{download.message.link}'>{download.extra_details['mode']}</a>"
+            msg += f"\n├ <code>Task     </code>» <a href='{download.message.link}'>{download.extra_details['mode']}</a>"
             
-        msg += f"\n┠•☺ User </code>: {tag}"
-        msg += f"\n┖•✘ /{BotCommands.CancelMirror}_{download.gid()}\n\n"
+        msg += f"\n├ By </code>: {tag}"
+        msg += f"\n└  /{BotCommands.CancelMirror}_{download.gid()}\n\n"
        
     if len(msg) == 0:
         return None, None
