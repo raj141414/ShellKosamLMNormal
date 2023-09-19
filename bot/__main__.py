@@ -104,7 +104,7 @@ async def stats(_, message):
             f'├» MEGA      : {MGA}</code> <b>GB</b>\n' \
             f'├» User Tasks: {UMT}</code>\n' \
             f'└» Bot Tasks : {BMT}</code>'
-    reply_message = await sendMessage(message, stats)
+    reply_message = await sendMessage(message, stats, photo='IMAGES')
     await auto_delete_message(message, reply_message)
 
 
@@ -131,7 +131,7 @@ async def start(_, message):
         start_string = 'Sorry, you cant use me here!\n' \
                        'By @imthemetaverse.\n' \
                        'Thank You'
-    await sendMessage(message, start_string)
+    await sendMessage(message, start_string, photo='IMAGES')
 
 
 async def restart(_, message):
