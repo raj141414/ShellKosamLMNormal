@@ -125,7 +125,7 @@ async def user_settings(_, message):
     from_user = message.from_user
     handler_dict[from_user.id] = False
     msg, button = await get_user_settings(from_user)
-    reply_message = await sendMessage(message, msg, button)
+    reply_message = await sendMessage(message, msg, button, photo='IMAGES')
     await auto_delete_message(message, reply_message)
 
 @new_thread
@@ -493,6 +493,7 @@ This will remove if any of those words found in filename.
         await message.reply_to_message.delete()
         await message.delete()
 
+
 @new_thread
 async def send_users_settings(_, message):
     text = message.text.split(maxsplit=1)
@@ -533,7 +534,7 @@ async def send_users_settings(_, message):
         else:
             msg += '\nThis user is not saved anythings.'
             button = None
-        await sendMessage(message, msg, button, photo='IMAGES')
+        await sendMessage(message, msg, button)
     else:
         await sendMessage(message, f'{userid} have not saved anything..')
 
