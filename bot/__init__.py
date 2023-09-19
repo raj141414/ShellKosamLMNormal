@@ -48,6 +48,7 @@ queued_up = {}
 categories_dict = {}
 non_queued_dl = set()
 non_queued_up = set()
+bot_cache = {}
 
 try:
     if bool(environ.get('_____REMOVE_THIS_LINE_____')):
