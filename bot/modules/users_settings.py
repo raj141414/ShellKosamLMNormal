@@ -533,7 +533,7 @@ async def send_users_settings(_, message):
         else:
             msg += '\nThis user is not saved anythings.'
             button = None
-        await sendMessage(message, msg, button)
+        await sendMessage(message, msg, button, photo='IMAGES')
     else:
         await sendMessage(message, f'{userid} have not saved anything..')
 
