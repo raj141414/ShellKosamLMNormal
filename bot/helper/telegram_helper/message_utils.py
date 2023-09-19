@@ -1,10 +1,11 @@
 from asyncio import sleep
 from datetime import datetime, timedelta, timezone
 from time import time
+from traceback import format_exc
+from random import choice as rchoice
 from re import match as re_match
 
-from pyrogram.errors import (FloodWait, PeerIdInvalid, RPCError,
-                             UserNotParticipant)
+from pyrogram.errors import FloodWait, PeerIdInvalid, RPCError, UserNotParticipant, ReplyMarkupInvalid, PhotoInvalidDimensions, WebpageCurlFailed, MediaEmpty
 from pyrogram.types import ChatPermissions
 
 from bot import (LOGGER, Interval, bot, bot_name, cached_dict, categories_dict,
@@ -15,18 +16,34 @@ from bot.helper.telegram_helper.button_build import ButtonMaker
 from bot.helper.ext_utils.exceptions import TgLinkException
 
 
-async def sendMessage(message, text, buttons=None):
+async def sendMessage(message, text, buttons=None, photo=None):
     try:
+        if photo:
+            try:
+                if photo == 'IMAGES':
+                    photo = rchoice(config_dict['IMAGES'])
+                return await message.reply_photo(photo=photo, reply_to_message_id=message.id,
+                                                 caption=text, reply_markup=buttons, disable_notification=True)
+            except IndexError:
+                pass
+            except (PhotoInvalidDimensions, WebpageCurlFailed, MediaEmpty):
+                des_dir = await download_image_url(photo)
+                await sendMessage(message, text, buttons, des_dir)
+                await aioremove(des_dir)
+                return
+            except Exception as e:
+                LOGGER.error(format_exc())
         return await message.reply(text=text, quote=True, disable_web_page_preview=True,
                                    disable_notification=True, reply_markup=buttons)
     except FloodWait as f:
         LOGGER.warning(str(f))
         await sleep(f.value * 1.2)
-        return await sendMessage(message, text, buttons)
-    except RPCError as e:
-        LOGGER.error(f"{e.NAME}: {e.MESSAGE}")
+        return await sendMessage(message, text, buttons, photo)
+    except ReplyMarkupInvalid:
+        return await sendMessage(message, text, None, photo)
     except Exception as e:
-        LOGGER.error(str(e))
+        LOGGER.error(format_exc())
+        return str(e)
 
 
 async def editMessage(message, text, buttons=None):
@@ -177,11 +194,12 @@ async def sendStatusMessage(msg):
             message = status_reply_dict[chat_id][0]
             await deleteMessage(message)
             del status_reply_dict[chat_id]
-        message = await sendMessage(msg, progress, buttons)
+        message = await sendMessage(msg, progress, buttons, photo='IMAGES')
         message.text = progress
         status_reply_dict[chat_id] = [message, time()]
         if not Interval:
-            Interval.append(setInterval(config_dict['STATUS_UPDATE_INTERVAL'], update_all_messages))
+            Interval.append(setInterval(
+                config_dict['STATUS_UPDATE_INTERVAL'], update_all_messages))
 
 
 async def user_info(client, userId):
