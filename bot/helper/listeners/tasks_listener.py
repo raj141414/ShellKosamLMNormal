@@ -411,48 +411,48 @@ class MirrorLeechListener:
             msg_ = '\n<b><i>Files has been sent in your DM.</i></b>'
             if not self.dmMessage:
                 if not files:
-                    await sendMessage(self.message, lmsg + msg)
+                    await sendMessage(self.message, lmsg + msg, photo='IMAGES')
                     if self.logMessage:
-                        await sendMessage(self.logMessage, lmsg + msg)
+                        await sendMessage(self.logMessage, lmsg + msg, photo='IMAGES')
                 else:
                     fmsg = '\n'
                     for index, (link, name) in enumerate(files.items(), start=1):
                         fmsg += f"{index}. <a href='{link}'>{name}</a>\n"
                         if len(fmsg.encode() + msg.encode()) > 4000:
                             if self.logMessage:
-                                await sendMessage(self.logMessage, lmsg + msg + fmsg)
-                            await sendMessage(self.message, lmsg + msg + fmsg)
+                                await sendMessage(self.logMessage, lmsg + msg + fmsg, photo='IMAGES')
+                            await sendMessage(self.message, lmsg + msg + fmsg, photo='IMAGES')
                             await sleep(1)
                             fmsg = '\n'
                     if fmsg != '\n':
                         if self.logMessage:
-                            await sendMessage(self.logMessage, lmsg + msg + fmsg)
-                        await sendMessage(self.message, lmsg + msg + fmsg)
+                            await sendMessage(self.logMessage, lmsg + msg + fmsg, photo='IMAGES')
+                        await sendMessage(self.message, lmsg + msg + fmsg, photo='IMAGES')
             else:
                 if not files:
-                    await sendMessage(self.message, gmsg + msg + msg_)
+                    await sendMessage(self.message, gmsg + msg + msg_, photo='IMAGES')
                     if self.logMessage:
-                        await sendMessage(self.logMessage, lmsg + msg)
+                        await sendMessage(self.logMessage, lmsg + msg, photo='IMAGES')
                 elif self.dmMessage and not config_dict['DUMP_CHAT_ID']:
-                    await sendMessage(self.dmMessage, lmsg + msg)
-                    await sendMessage(self.message, gmsg + msg + msg_)
+                    await sendMessage(self.dmMessage, lmsg + msg, photo='IMAGES')
+                    await sendMessage(self.message, gmsg + msg + msg_, photo='IMAGES')
                     if self.logMessage:
-                        await sendMessage(self.logMessage, lmsg + msg)
+                        await sendMessage(self.logMessage, lmsg + msg, photo='IMAGES')
                 else:
                     fmsg = '\n'
                     for index, (link, name) in enumerate(files.items(), start=1):
                         fmsg += f"{index}. <a href='{link}'>{name}</a>\n"
                         if len(fmsg.encode() + msg.encode()) > 4000:
                             if self.logMessage:
-                                await sendMessage(self.logMessage, lmsg + msg + fmsg)
-                            await sendMessage(self.dmMessage, gmsg + msg + fmsg)
+                                await sendMessage(self.logMessage, lmsg + msg + fmsg, photo='IMAGES')
+                            await sendMessage(self.dmMessage, gmsg + msg + fmsg, photo='IMAGES')
                             await sleep(1)
                             fmsg = '\n'
                     if fmsg != '\n':
                         if self.logMessage:
-                            await sendMessage(self.logMessage, lmsg + msg + fmsg)
-                        await sendMessage(self.message, gmsg + msg + msg_)
-                        await sendMessage(self.dmMessage, gmsg + msg + fmsg)
+                            await sendMessage(self.logMessage, lmsg + msg + fmsg, photo='IMAGES')
+                        await sendMessage(self.message, gmsg + msg + msg_, photo='IMAGES')
+                        await sendMessage(self.dmMessage, gmsg + msg + fmsg, photo='IMAGES')
             if self.seed:
                 if self.newDir:
                     await clean_target(self.newDir)
@@ -495,22 +495,22 @@ class MirrorLeechListener:
                                 buttons.ubutton("🌐 View Link", share_urls)
                 buttons = extra_btns(buttons)
                 if self.dmMessage:
-                    await sendMessage(self.dmMessage, lmsg + msg + _msg, buttons.build_menu(2))
-                    await sendMessage(self.message, gmsg + msg + msg_)
+                    await sendMessage(self.dmMessage, lmsg + msg + _msg, buttons.build_menu(2), photo='IMAGES')
+                    await sendMessage(self.message, gmsg + msg + msg_, photo='IMAGES')
                 else:
-                    await sendMessage(self.message, lmsg + msg + _msg, buttons.build_menu(2))
+                    await sendMessage(self.message, lmsg + msg + _msg, buttons.build_menu(2), photo='IMAGES')
                 if self.logMessage:
                     if link.startswith("https://drive.google.com/") and config_dict['DISABLE_DRIVE_LINK']:
                         buttons.ubutton("♻️ Drive Link", link, 'header')
-                    await sendMessage(self.logMessage, lmsg + msg + _msg, buttons.build_menu(2))
+                    await sendMessage(self.logMessage, lmsg + msg + _msg, buttons.build_menu(2), photo='IMAGES')
             else:
                 if self.dmMessage:
-                    await sendMessage(self.message, gmsg + msg + msg_)
-                    await sendMessage(self.dmMessage, lmsg + msg + _msg)
+                    await sendMessage(self.message, gmsg + msg + msg_, photo='IMAGES')
+                    await sendMessage(self.dmMessage, lmsg + msg + _msg, photo='IMAGES')
                 else:
-                    await sendMessage(self.message, lmsg + msg + _msg + msg_)
+                    await sendMessage(self.message, lmsg + msg + _msg + msg_, photo='IMAGES')
                 if self.logMessage:
-                    await sendMessage(self.logMessage, lmsg + msg + _msg)
+                    await sendMessage(self.logMessage, lmsg + msg + _msg, photo='IMAGES')
             if self.seed and not self.isClone:
                 if self.newDir:
                     await clean_target(self.newDir)
