@@ -12,7 +12,7 @@ from pyrogram.types import BotCommand
 from aiohttp import ClientSession
 from pyrogram.types import CallbackQuery
 
-from bot import (bot_loop, bot_name, botStartTime, config_dict, download_dict,
+from bot import (bot, bot_loop, bot_name, botStartTime, config_dict, download_dict,
                  download_dict_lock, extra_buttons, user_data)
 from bot.helper.ext_utils.shortener import short_url
 from bot.helper.ext_utils.telegraph_helper import telegraph
