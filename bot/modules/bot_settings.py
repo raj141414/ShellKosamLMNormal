@@ -374,6 +374,9 @@ async def load_config():
     else:
         TOKEN_TIMEOUT = ''
 
+   IMAGES = environ.get('IMAGES', '')
+   IMAGES = (IMAGES.replace("'", '').replace('"', '').replace('[', '').replace(']', '').replace(",", "")).split()
+
     list_drives_dict.clear()
     categories_dict.clear()
 
@@ -468,6 +471,7 @@ async def load_config():
                         'FSUB_IDS': FSUB_IDS,
                         'GDRIVE_ID': GDRIVE_ID,
                         'GDRIVE_LIMIT': GDRIVE_LIMIT,
+                        'IMAGES': IMAGES,
                         'INCOMPLETE_TASK_NOTIFIER': INCOMPLETE_TASK_NOTIFIER,
                         'INDEX_URL': INDEX_URL,
                         'IS_TEAM_DRIVE': IS_TEAM_DRIVE,
