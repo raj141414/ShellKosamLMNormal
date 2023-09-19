@@ -374,8 +374,10 @@ async def load_config():
     else:
         TOKEN_TIMEOUT = ''
 
-   IMAGES = environ.get('IMAGES', '')
-   IMAGES = (IMAGES.replace("'", '').replace('"', '').replace('[', '').replace(']', '').replace(",", "")).split()
+    IMAGES = environ.get('IMAGES', '')
+    IMAGES = (IMAGES.replace("'", '').replace('"', '').replace(
+    '[', '').replace(']', '').replace(",", "")).split()
+
 
     list_drives_dict.clear()
     categories_dict.clear()
