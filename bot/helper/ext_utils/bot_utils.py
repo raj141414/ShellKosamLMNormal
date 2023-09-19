@@ -213,8 +213,8 @@ def get_readable_message():
         elif tstatus == MirrorStatus.STATUS_UPLOADING or tstatus == MirrorStatus.STATUS_SEEDING:
             up_speed += speed_in_bytes_per_second
 
+    buttons = ButtonMaker()
     if tasks > STATUS_LIMIT:
-        buttons = ButtonMaker()
         buttons.ibutton("⫷", "status pre")
         buttons.ibutton(f"{PAGE_NO}/{PAGES}", "status ref")
         buttons.ibutton("⫸", "status nex")
