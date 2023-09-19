@@ -44,14 +44,23 @@ async def mirror_status(_, message):
 
 @new_task
 async def status_pages(_, query):
-    if not await isAdmin(query.message, query.from_user.id) and await request_limiter(query=query):
-        return
-    await query.answer()
+    user_id = query.from_user.id
     data = query.data.split()
-    if data[1] == "ref":
+    if data[1] == 'ref':
+        bot_cache.setdefault('status_refresh', {})
+        if user_id in (refresh_status := bot_cache['status_refresh']) and (curr := (time() - refresh_status[user_id])) < 7:
+            return await query.answer(f'Already Refreshed! Try after {get_readable_time(7 - curr)}', show_alert=True)
+        else:
+            refresh_status[user_id] = time()
+        await editMessage(query.message, f"{(await user_info(user_id)).mention(style='html')}, Refreshing Status...")
+        await sleep(2)
         await update_all_messages(True)
-    else:
+    elif data[1] in ['nex', 'pre']:
         await turn_page(data)
+        await update_all_messages(True)
+    elif data[1] == 'close':
+        await delete_all_messages()
+    await query.answer()
 
 
 bot.add_handler(MessageHandler(mirror_status, filters=command(
