@@ -8,7 +8,7 @@ from bot import (Interval, bot, bot_cache, botStartTime, config_dict, download_d
                  download_dict_lock, status_reply_dict_lock)
 from bot.helper.ext_utils.bot_utils import (get_readable_file_size,
                                             get_readable_time, new_task,
-                                            setInterval, turn_page)
+                                            setInterval, turn_page, user_info)
 from bot.helper.telegram_helper.bot_commands import BotCommands
 from bot.helper.telegram_helper.filters import CustomFilters
 from bot.helper.telegram_helper.message_utils import (auto_delete_message,
