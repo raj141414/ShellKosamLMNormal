@@ -4,7 +4,7 @@ from psutil import cpu_percent, disk_usage, virtual_memory
 from pyrogram.filters import command, regex
 from pyrogram.handlers import CallbackQueryHandler, MessageHandler
 
-from bot import (Interval, bot, botStartTime, config_dict, download_dict,
+from bot import (Interval, bot, bot_cache, botStartTime, config_dict, download_dict,
                  download_dict_lock, status_reply_dict_lock)
 from bot.helper.ext_utils.bot_utils import (get_readable_file_size,
                                             get_readable_time, new_task,
@@ -16,6 +16,7 @@ from bot.helper.telegram_helper.message_utils import (auto_delete_message,
                                                       request_limiter,
                                                       sendMessage,
                                                       sendStatusMessage,
+                                                      delete_all_messages,
                                                       update_all_messages)
 
 
