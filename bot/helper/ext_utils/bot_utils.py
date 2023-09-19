@@ -7,7 +7,7 @@ from html import escape
 from re import match
 from time import time
 from uuid import uuid4
-from psutil import disk_usage
+from psutil import virtual_memory, cpu_percent, disk_usage, net_io_counters
 from pyrogram.types import BotCommand
 from aiohttp import ClientSession
 from pyrogram.filters import regex
