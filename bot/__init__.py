@@ -401,6 +401,11 @@ USER_DUMP = '' if len(USER_DUMP) == 0 else USER_DUMP
 if USER_DUMP.isdigit() or USER_DUMP.startswith('-'):
     USER_DUMP = int(USER_DUMP)
 
+IMAGES = environ.get('IMAGES', '')
+IMAGES = (IMAGES.replace("'", '').replace('"', '').replace(
+    '[', '').replace(']', '').replace(",", "")).split()
+
+
 config_dict = {
     "AS_DOCUMENT": AS_DOCUMENT,
     "AUTHORIZED_CHATS": AUTHORIZED_CHATS,
@@ -416,6 +421,7 @@ config_dict = {
     "EQUAL_SPLITS": EQUAL_SPLITS,
     "EXTENSION_FILTER": EXTENSION_FILTER,
     "GDRIVE_ID": GDRIVE_ID,
+    "IMAGES": IMAGES,
     "INCOMPLETE_TASK_NOTIFIER": INCOMPLETE_TASK_NOTIFIER,
     "INDEX_URL": INDEX_URL,
     "IS_TEAM_DRIVE": IS_TEAM_DRIVE,
