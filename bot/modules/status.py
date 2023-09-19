@@ -15,6 +15,7 @@ from bot.helper.telegram_helper.message_utils import (auto_delete_message,
                                                       deleteMessage, isAdmin,
                                                       request_limiter,
                                                       sendMessage,
+                                                      editMessage,
                                                       sendStatusMessage,
                                                       delete_all_messages,
                                                       update_all_messages)
