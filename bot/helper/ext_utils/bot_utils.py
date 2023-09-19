@@ -460,6 +460,13 @@ async def set_commands(client):
         ])
 
 
+async def user_info(user_id):
+    try:
+        return await bot.get_users(user_id)
+    except Exception:
+        return ''
+
+
 ONE, TWO, THREE = range(3)
 @bot.on_callback_query(regex(pattern=f"^{str(THREE)}$"))
 async def pop_up_stats(client, CallbackQuery):
