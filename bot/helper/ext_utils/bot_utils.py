@@ -220,15 +220,13 @@ def get_readable_message():
         buttons.ibutton("⫸", "status nex")
         button = buttons.build_menu(3)
     else:
-        buttons.ibutton("Refresh", "status ref")
-        buttons.ibutton("Statistics", str(THREE))
-        buttons.ubutton(f"Repo", f"https://github.com/SN-Abdullah-Al-Noman/Atrocious_Mirror")
+        buttons.ibutton("Stats", str(THREE))
+        buttons.ibutton("♻️", "status ref")
         buttons.ibutton("Close", "status close")
         button = buttons.build_menu(2)
     msg += "____________________________"
-    msg += f"\n<b>CPU:</b> {cpu_percent()}% | <b>RAM:</b> {virtual_memory().percent}%"
-    msg += f"\n<b>DISK</b>: {get_readable_file_size(disk_usage(config_dict['DOWNLOAD_DIR']).free)}</code> | <b>Up</b>: {get_readable_time(time() - botStartTime)}</code>"
-    msg += f"\n<b>DL</b>: {get_readable_file_size(dl_speed)}/s</code> | <b>UP</b>: {get_readable_file_size(up_speed)}/s</code>"
+    msg += f"\n<b>CPU:</b> {cpu_percent()}% | <b>RAM:</b> {virtual_memory().percent}% | <b>Free</b>: {get_readable_file_size(disk_usage(config_dict['DOWNLOAD_DIR']).free)}</code>"
+    msg += f"\n<b>DL</b>: {get_readable_file_size(dl_speed)}/s</code> | <b>UP</b>: {get_readable_file_size(up_speed)}/s</code> | <b>Up</b>: {get_readable_time(time() - botStartTime)}</code>"
     remaining_time = 86400 - (time() - botStartTime)
     res_time = '⚠️ ANYTIME ⚠️' if remaining_time <= 0 else get_readable_time(remaining_time)
     if remaining_time <= 3600:
