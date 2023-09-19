@@ -10,6 +10,7 @@ from uuid import uuid4
 from psutil import disk_usage
 from pyrogram.types import BotCommand
 from aiohttp import ClientSession
+from pyrogram.types import CallbackQuery
 
 from bot import (bot_loop, bot_name, botStartTime, config_dict, download_dict,
                  download_dict_lock, extra_buttons, user_data)
@@ -217,6 +218,12 @@ def get_readable_message():
         buttons.ibutton(f"{PAGE_NO}/{PAGES}", "status ref")
         buttons.ibutton("⫸", "status nex")
         button = buttons.build_menu(3)
+    else:
+        buttons.ibutton("Refresh", "status ref")
+        buttons.ibutton("Statistics", str(THREE))
+        buttons.ubutton(f"Repo", f"https://github.com/SN-Abdullah-Al-Noman/Atrocious_Mirror")
+        buttons.ibutton("Close", "status close")
+        button = buttons.build_menu(2)
     msg += "____________________________"
     msg += f"\n<b>✇ DISK</b>: {get_readable_file_size(disk_usage(config_dict['DOWNLOAD_DIR']).free)}</code>"
     msg += f" ║ <b>🝋 Uptime</b>: {get_readable_time(time() - botStartTime)}</code>"
@@ -450,3 +457,47 @@ async def set_commands(client):
             BotCommand(f'{BotCommands.UserSetCommand}', 'Users settings'),
             BotCommand(f'{BotCommands.HelpCommand}', 'Get detailed help'),
         ])
+
+
+ONE, TWO, THREE = range(3)
+@bot.on_callback_query(regex(pattern=f"^{str(THREE)}$"))
+async def pop_up_stats(client, CallbackQuery):
+    sent = get_readable_file_size(net_io_counters().bytes_recv)
+    recv = get_readable_file_size(net_io_counters().bytes_sent)
+    num_active = 0
+    num_upload = 0
+    num_seeding = 0
+    num_zip = 0
+    num_unzip = 0
+    num_split = 0
+    num_queuedl = 0
+    num_queueup = 0
+    
+    for stats in list(download_dict.values()):
+        if stats.status() == MirrorStatus.STATUS_DOWNLOADING:
+            num_active += 1
+        if stats.status() == MirrorStatus.STATUS_UPLOADING:
+            num_upload += 1
+        if stats.status() == MirrorStatus.STATUS_SEEDING:
+            num_seeding += 1
+        if stats.status() == MirrorStatus.STATUS_ARCHIVING:
+            num_zip += 1
+        if stats.status() == MirrorStatus.STATUS_EXTRACTING:
+            num_unzip += 1
+        if stats.status() == MirrorStatus.STATUS_SPLITTING:
+            num_split += 1
+        if stats.status() == MirrorStatus.STATUS_QUEUEDL:
+            num_queuedl += 1
+        if stats.status() == MirrorStatus.STATUS_QUEUEUP:
+            num_queueup += 1
+        
+            
+    msg = f"Toxic Telegram\n\n"
+    msg += f"Sent: {sent} | Received: {recv}\n\n"
+    msg += f"Download: {num_active} | Upload: {num_upload}\n\n"
+    msg += f"Seed: {num_seeding} | Split: {num_split}\n\n"
+    msg += f"Zip: {num_zip} | Unzip: {num_unzip}\n\n"
+    msg += f"QueueDl: {num_queuedl} | QueueUp: {num_queueup}\n\n"
+    msg += f"Uninstall telegram and save your life."
+
+    await CallbackQuery.answer(text=msg, show_alert=True)
