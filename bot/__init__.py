@@ -402,8 +402,7 @@ if USER_DUMP.isdigit() or USER_DUMP.startswith('-'):
     USER_DUMP = int(USER_DUMP)
 
 IMAGES = environ.get('IMAGES', '')
-IMAGES = (IMAGES.replace("'", '').replace('"', '').replace(
-    '[', '').replace(']', '').replace(",", "")).split()
+IMAGES = (IMAGES.replace("'", '').replace('"', '').replace('[', '').replace(']', '').replace(",", "")).split()
 
 
 config_dict = {
