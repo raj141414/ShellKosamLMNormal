@@ -10,6 +10,7 @@ from uuid import uuid4
 from psutil import disk_usage
 from pyrogram.types import BotCommand
 from aiohttp import ClientSession
+from pyrogram.filters import regex
 from pyrogram.types import CallbackQuery
 
 from bot import (bot, bot_loop, bot_name, botStartTime, config_dict, download_dict,
