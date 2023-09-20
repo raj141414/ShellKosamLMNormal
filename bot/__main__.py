@@ -261,8 +261,7 @@ async def restart_notification():
 
     if await aiopath.isfile(".restartmsg"):
         try:
-            await bot.edit_message_text(chat_id=chat_id, message_id=msg_id, text='Bot Restarted...')\n' \
-                                       'Avaliable to serve again ...\n' \
+            await bot.edit_message_text(chat_id=chat_id, message_id=msg_id, text='Bot Restarted...')
                                       
         except:
             pass
