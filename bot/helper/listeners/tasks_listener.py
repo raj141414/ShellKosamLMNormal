@@ -463,10 +463,10 @@ class MirrorLeechListener:
                 await start_from_queued()
                 return
         else:
-            msg += f'\n<code>Type            </code>: {mime_type}'
+            msg += f'\n┌ Type </code>: {mime_type}'
             if mime_type == "Folder":
-                msg += f'\n<code>Sub Folders     </code>: {folders}'
-                msg += f'\n<code>Files           </code>: {files}'
+                msg += f'\n├  Sub Folders </code>: {folders}'
+                msg += f'\n└  Files  </code>: {files}'
             if link or rclonePath and config_dict['RCLONE_SERVE_URL']:
                 buttons = ButtonMaker()
                 if link:
@@ -594,8 +594,8 @@ class MirrorLeechListener:
             if self.uid in self.sameDir:
                 self.sameDir.remove(self.uid)
         msg = f"{self.tag} {escape(str(error))}"
-        msg += f"\n<code>Elapsed </code>: {get_readable_time(time() - self.extra_details['startTime'])}"
-        msg += f"\n<code>Upload  </code>: {self.extra_details['mode']}"
+        msg += f"\n┌ Elapsed </code>: {get_readable_time(time() - self.extra_details['startTime'])}"
+        msg += f"\n└  Upload  </code>: {self.extra_details['mode']}"
         reply_message = await sendMessage(self.message, msg)
         if self.logMessage:
             await sendMessage(self.logMessage, msg)
