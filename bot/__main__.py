@@ -71,40 +71,32 @@ async def stats(_, message):
     UMT = 'Unlimited' if config_dict['USER_MAX_TASKS'] == '' else config_dict['USER_MAX_TASKS']
     BMT = 'Unlimited' if config_dict['QUEUE_ALL'] == '' else config_dict['QUEUE_ALL']
 
-    stats = f'<b>» Meta Bot Statistics</u></i></b>\n\n'\
-            f'<b>⌰ Repo Info</u></i></b>\n' \
-            f'<b>┌» Updated : </b> {last_commit}</code>\n' \
-            f'<b>├» Version : </b> {version}</code>\n' \
-            f'<b>└»Change Log : </b> {change_log}</code>\n\n' \
-            f'<b>⌆ Bot Info</u></i></b>\n' \
-            f'<b>┌» SYS UP : </b> {sysTime}</code>\n' \
-            f'<b>├» BOT UP : </b> {botTime}</code>\n' \
-            f'<b>└» BOT Restart : </b> {res_time}</code>\n\n' \
-            f'<b>┌» CPU : </b> {get_progress_bar_string(cpuUsage)} {cpuUsage}%</code>\n' \
-            f'<b>├» CPU Total Core(s) : </b> {cpu_count(logical=True)}</code>\n' \
-            f'<b>├» P-Core(s) : </b> {cpu_count(logical=False)}</code> | <b>V-Core(s):</b> <code>{v_core}</code>\n' \
-            f'<b>└» Frequency:</b> {cpu_freq(percpu=False).current / 1000:.2f} GHz</code>\n\n' \
-            f'<b>┌» RAM : </b> {get_progress_bar_string(mem_p)} {mem_p}%</code>\n' \
-            f'<b>├» RAM In Use : </b> {get_readable_file_size(memory.used)}</code> [{mem_p}%]\n' \
-            f'<b>└» Total : </b> {get_readable_file_size(memory.total)}</code> | <b>Free : </b> {get_readable_file_size(memory.available)}</code>\n\n' \
-            f'<b>┌» SWAP : </b> {get_progress_bar_string(swap.percent)} {swap.percent}%</code>\n' \
-            f'<b>├» SWAP In Use : </b> {get_readable_file_size(swap.used)}</code> [{swap.percent}%]\n' \
-            f'<b>└» Allocated : </b> {get_readable_file_size(swap.total)}</code> | <b>Free : </b> {get_readable_file_size(swap.free)}</code>\n\n' \
-            f'<b>┌» DISK : </b> {get_progress_bar_string(disk)} {disk}%</code>\n' \
-            f'<b>├» Drive In Use : </b> {used}</code> [{disk}%]\n' \
-            f'<b>└» Total : </b> {total}</code> | <b>Free : </b> {free}</code>\n\n' \
+    stats = f'<b>» UPSTREAM AND BOT STATUS</u></i></b>\n\n'\
+            f'<b>┌ Repo Info</u></i></b>\n' \
+            f'<b>├ Updated : </b> {last_commit}</code>\n' \
+            f'<b>├ Version : </b> {version}</code>\n' \
+            f'<b>└ Change Log : </b> {change_log}</code>\n\n' \
+            f'<b>┌ Bot Info</u></i></b>\n' \
+            f'<b>├ SYS UP : </b> {sysTime}</code>\n' \
+            f'<b>├ BOT UP : </b> {botTime}</code>\n' \
+            f'<b>└ BOT Restart : </b> {res_time}</code>\n\n' \
+            f'<b>┌ System Status</u></i></b>\n' \
+            f'<b>├ CPU : </b> {get_progress_bar_string(cpuUsage)} {cpuUsage}%</code>\n' \
+            f'<b>├ CPU Total Core(s) : </b> {cpu_count(logical=True)}</code>\n' \
+            f'<b>├ P-Core(s) : </b> {cpu_count(logical=False)}</code> | <b>V-Core(s):</b> <code>{v_core}</code>\n' \
+            f'<b>└ Frequency:</b> {cpu_freq(percpu=False).current / 1000:.2f} GHz</code>\n\n' \
+            f'<b>┌ RAM : </b> {get_progress_bar_string(mem_p)} {mem_p}%</code>\n' \
+            f'<b>├ RAM In Use : </b> {get_readable_file_size(memory.used)}</code> [{mem_p}%]\n' \
+            f'<b>└ Total : </b> {get_readable_file_size(memory.total)}</code> | <b>Free : </b> {get_readable_file_size(memory.available)}</code>\n\n' \
+            f'<b>┌ SWAP : </b> {get_progress_bar_string(swap.percent)} {swap.percent}%</code>\n' \
+            f'<b>├ SWAP In Use : </b> {get_readable_file_size(swap.used)}</code> [{swap.percent}%]\n' \
+            f'<b>└ Allocated : </b> {get_readable_file_size(swap.total)}</code> | <b>Free : </b> {get_readable_file_size(swap.free)}</code>\n\n' \
+            f'<b>┌ DISK : </b> {get_progress_bar_string(disk)} {disk}%</code>\n' \
+            f'<b>├ Drive In Use : </b> {used}</code> [{disk}%]\n' \
+            f'<b>└ Total : </b> {total}</code> | <b>Free : </b> {free}</code>\n\n' \
             f'<b>⥣ UL : </b> {sent}</code> | <b>⥥ DL:</b> {recv}</code>\n\n' \
-            f'<b> Bot Limits</u></i></b>\n' \
-            f'┌» Torrent   : {TOR}</code> <b>GB</b>\n' \
-            f'├» G-Drive   : {GDL}</code> <b>GB</b>\n' \
-            f'├» Yt-Dlp    : {YTD}</code> <b>GB</b>\n' \
-            f'├» Direct    : {DIR}</code> <b>GB</b>\n' \
-            f'├» Clone     : {CLL}</code> <b>GB</b>\n' \
-            f'├» Leech     : {TGL}</code> <b>GB</b>\n' \
-            f'├» MEGA      : {MGA}</code> <b>GB</b>\n' \
-            f'├» User Tasks: {UMT}</code>\n' \
-            f'└» Bot Tasks : {BMT}</code>'
-    reply_message = await sendMessage(message, stats, photo='IMAGES')
+          
+    reply_message = await sendMessage(message, stats, photo='https://graph.org/file/03c59fa83ff673298bbf5.jpg')
     await auto_delete_message(message, reply_message)
 
 
