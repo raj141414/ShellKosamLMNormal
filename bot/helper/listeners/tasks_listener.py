@@ -395,11 +395,12 @@ class MirrorLeechListener:
         if self.isSuperGroup and config_dict['INCOMPLETE_TASK_NOTIFIER'] and DATABASE_URL:
             await DbManger().rm_complete_task(self.message.link)
         LOGGER.info(f'Done Uploading {name}')
-        lmsg = f'<b><i>{escape(name)}</i></b>'
+        
         gmsg = f'Hey <b>{self.tag}</b>!\nYour Download finished...'
         msg = f'\n\n┌ Size </code>: {get_readable_file_size(size)}'
         msg += f"\n├ Elapsed </code>: {get_readable_time(time() - self.extra_details['startTime'])}"
         msg += f"\n├ Action </code>: {self.extra_details['mode']}"
+        lmsg = f'<b><i>{escape(name)}</i></b>'
         lmsg += f'\n<b>├ cc</b>: <i>{self.tag}</i>'
         _msg = '' if rclonePath == '' else f'\n\n<code>Path            </code>: {rclonePath}'
         msg_ = '\n\n<b><i>Links has been sent in your DM.</i></b>'
@@ -411,9 +412,9 @@ class MirrorLeechListener:
             msg_ = '\n<b><i>Files has been sent in your DM.</i></b>'
             if not self.dmMessage:
                 if not files:
-                    await sendMessage(self.message, lmsg + msg, photo='IMAGES')
+                    await sendMessage(self.message, lmsg + msg, photo='https://graph.org/file/f6195e8a098465bcf5090.jpg')
                     if self.logMessage:
-                        await sendMessage(self.logMessage, lmsg + msg, photo='IMAGES')
+                        await sendMessage(self.logMessage, lmsg + msg, photo='https://graph.org/file/f6195e8a098465bcf5090.jpg')
                 else:
                     fmsg = '\n'
                     for index, (link, name) in enumerate(files.items(), start=1):
@@ -547,10 +548,11 @@ class MirrorLeechListener:
             if self.sameDir and self.uid in self.sameDir['tasks']:
                 self.sameDir['tasks'].remove(self.uid)
                 self.sameDir['total'] -= 1
-        msg = f"Sorry {self.tag}!\nDownload Has Been Stopped..."
-        msg += f"\n\n<code>Reason  </code>: {escape(str(error))}"
-        msg += f"\n<code>Elapsed </code>: {get_readable_time(time() - self.extra_details['startTime'])}"
-        msg += f"\n<code>Upload  </code>: {self.extra_details['mode']}"
+        msg += f"\n\n┌ Download Has Been Stopped!"
+        msg += f"\n\n├ Reason  </code>: {escape(str(error))}"
+        msg += f"\n├ Elapsed </code>: {get_readable_time(time() - self.extra_details['startTime'])}"
+        msg += f"\n├ Upload  </code>: {self.extra_details['mode']}"
+        msg = f"└ CC {self.tag}
         reply_message = await sendMessage(self.message, msg, button)
         if self.logMessage:
             await sendMessage(self.logMessage, msg, button)
