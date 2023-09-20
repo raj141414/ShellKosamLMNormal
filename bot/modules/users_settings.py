@@ -41,7 +41,7 @@ async def get_user_settings(from_user):
         ltype = "MEDIA"
         buttons.ibutton("Send As Document", f"userset {user_id} doc")
 
-    buttons.ibutton("Add Leech Prefix", f"userset {user_id} lprefix")
+    buttons.ibutton("Leech Prefix", f"userset {user_id} lprefix")
     if user_dict.get('lprefix', False):
         lprefix = user_dict['lprefix']
     elif 'lprefix' not in user_dict and (LP := config_dict['LEECH_FILENAME_PREFIX']):
@@ -49,7 +49,7 @@ async def get_user_settings(from_user):
     else:
         lprefix = 'None'
 
-    buttons.ibutton("Add Leech Splits", f"userset {user_id} lss")
+    buttons.ibutton("Leech Splits", f"userset {user_id} lss")
     split_size = user_dict.get('split_size', False) or config_dict['LEECH_SPLIT_SIZE']
     split_size = get_readable_file_size(split_size)
 
@@ -58,7 +58,7 @@ async def get_user_settings(from_user):
     else:
         equal_splits = 'Disabled'
 
-    buttons.ibutton("Add Thumbnail", f"userset {user_id} sthumb")
+    buttons.ibutton("Thumbnail", f"userset {user_id} sthumb")
     thumbmsg = "Exists" if await aiopath.exists(thumbpath) else "Not Exists"
 
     if user_dict.get('media_group', False) or 'media_group' not in user_dict and config_dict['MEDIA_GROUP']:
@@ -66,7 +66,7 @@ async def get_user_settings(from_user):
     else:
         media_group = 'Disabled'
 
-    buttons.ibutton("Add YT-DLP Options", f"userset {user_id} yto")
+    buttons.ibutton("YT-DLP Options", f"userset {user_id} yto")
     if user_dict.get('yt_opt', False):
         ytopt = user_dict['yt_opt']
     elif 'yt_opt' not in user_dict and (YTO := config_dict['YT_DLP_OPTIONS']):
@@ -74,10 +74,10 @@ async def get_user_settings(from_user):
     else:
         ytopt = 'None'
 
-    buttons.ibutton("Add Rclone", f"userset {user_id} rcc")
+    buttons.ibutton("Rclone", f"userset {user_id} rcc")
     rccmsg = "Exists" if await aiopath.exists(rclone_path) else "Not Exists"
 
-    buttons.ibutton("Add User Dump", f"userset {user_id} udump")
+    buttons.ibutton("User Dump", f"userset {user_id} udump")
     if user_dict.get('user_dump', False):
         user_dump = user_dict['user_dump']
     elif 'user_dump' not in user_dict and (UD := config_dict['USER_DUMP']):
@@ -85,7 +85,7 @@ async def get_user_settings(from_user):
     else:
         user_dump = 'None'
 
-    buttons.ibutton("Add Remove Unwanted", f"userset {user_id} lremname")
+    buttons.ibutton("Remove Unwanted", f"userset {user_id} lremname")
     if user_dict.get('lremname', False):
         lremname = user_dict['lremname']
     elif 'lremname' not in user_dict and (LFP := config_dict['LEECH_REMOVE_UNWANTED']):
