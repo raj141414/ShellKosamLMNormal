@@ -116,7 +116,6 @@ async def start(_, message):
         start_string = 'Bot Started.\n' \
                        'Now I can send your stuff directoly to you.\n' \
                        'Owner: @imthemetaverse'
-    await sendMessage(message, start_string, photo='https://graph.org/file/d3c4df3a039eb1c962538.jpg')
     else:
         start_string = 'Sorry, you cant use me personal....\n' \
                        'By @imthemetaverse.\n' \
