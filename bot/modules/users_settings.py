@@ -394,13 +394,13 @@ Check all yt-dlp api options from this <a href='https://github.com/yt-dlp/yt-dlp
         rmsg = f'''
 Send Leech Prefix. Timeout: 60 sec
 Examples:
-1. <code>{escape('<b>@Z_Mirror</b>')}</code> 
+1. <code>{escape('<b>meta_verse</b>')}</code> 
 This will give output of:
-<b>@Z_Mirror</b>  <code>69MB.bin</code>.
+<b>meta_verser</b>  <code>69MB.bin</code>.
 
-2. <code>{escape('<code>@Z_Mirror</code>')}</code> 
+2. <code>{escape('<code>meta_verse</code>')}</code> 
 This will give output of:
-<code>@Z_Mirror</code> <code>69MB.bin</code>.
+<code>meta_verse</code> <code>69MB.bin</code>.
 
 Check all available formatting options <a href="https://core.telegram.org/bots/api#formatting-options">HERE</a>.
         '''
@@ -428,7 +428,7 @@ Timeout: 60 sec
 
 Examples: <code>mltb|jmdkh|wzml</code>
 
-This will remove if any of those words found in filename.
+This will find and remove if any of given words found in filename.
 '''
         await editMessage(message, rmsg, buttons.build_menu(1))
         pfunc = partial(set_remname, pre_event=query)
@@ -448,7 +448,7 @@ This will remove if any of those words found in filename.
                             f"userset {user_id} rudump")
         buttons.ibutton("Back", f"userset {user_id} back")
         buttons.ibutton("Close", f"userset {user_id} close")
-        await editMessage(message, 'Send USER DUMP ID. Timeout: 60 sec', buttons.build_menu(1))
+        await editMessage(message, 'Send USER DUMP ID. starts with - 100.  waiting : 60 sec', buttons.build_menu(1))
         pfunc = partial(set_user_dump, pre_event=query)
         await event_handler(client, query, pfunc)
     elif data[2] == 'rudump':
