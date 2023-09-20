@@ -86,11 +86,8 @@ async def stats(_, message):
             f'<b>├ P-Core(s) : </b> {cpu_count(logical=False)}</code> | <b>V-Core(s):</b> <code>{v_core}</code>\n' \
             f'<b>└ Frequency:</b> {cpu_freq(percpu=False).current / 1000:.2f} GHz</code>\n\n' \
             f'<b>┌ RAM : </b> {get_progress_bar_string(mem_p)} {mem_p}%</code>\n' \
-            f'<b>├ RAM In Use : </b> {get_readable_file_size(memory.used)}</code> [{mem_p}%]\n' \
+            f'<b>├ Used : </b> {get_readable_file_size(memory.used)}</code> [{mem_p}%]\n' \
             f'<b>└ Total : </b> {get_readable_file_size(memory.total)}</code> | <b>Free : </b> {get_readable_file_size(memory.available)}</code>\n\n' \
-            f'<b>┌ SWAP : </b> {get_progress_bar_string(swap.percent)} {swap.percent}%</code>\n' \
-            f'<b>├ SWAP In Use : </b> {get_readable_file_size(swap.used)}</code> [{swap.percent}%]\n' \
-            f'<b>└ Allocated : </b> {get_readable_file_size(swap.total)}</code> | <b>Free : </b> {get_readable_file_size(swap.free)}</code>\n\n' \
             f'<b>┌ DISK : </b> {get_progress_bar_string(disk)} {disk}%</code>\n' \
             f'<b>├ Drive In Use : </b> {used}</code> [{disk}%]\n' \
             f'<b>└ Total : </b> {total}</code> | <b>Free : </b> {free}</code>\n\n' \
@@ -117,13 +114,14 @@ async def start(_, message):
         return await sendMessage(message, msg)
     elif config_dict['DM_MODE']:
         start_string = 'Bot Started.\n' \
-                       'Now I can send your stuff here.\n' \
+                       'Now I can send your stuff directoly to you.\n' \
                        'Owner: @imthemetaverse'
+    await sendMessage(message, start_string, photo='https://graph.org/file/d3c4df3a039eb1c962538.jpg')
     else:
-        start_string = 'Sorry, you cant use me here!\n' \
+        start_string = 'Sorry, you cant use me personal....\n' \
                        'By @imthemetaverse.\n' \
                        'Thank You'
-    await sendMessage(message, start_string, photo='IMAGES')
+    await sendMessage(message, start_string, photo='https://graph.org/file/98a6d4c71e49c952f5695.jpg')
 
 
 async def restart(_, message):
@@ -263,7 +261,9 @@ async def restart_notification():
 
     if await aiopath.isfile(".restartmsg"):
         try:
-            await bot.edit_message_text(chat_id=chat_id, message_id=msg_id, text='Restarted Successfully!')
+            await bot.edit_message_text(chat_id=chat_id, message_id=msg_id, text='Bot Restarted...')\n' \
+                                       'Avaliable to serve again ...\n' \
+                                      
         except:
             pass
         await aioremove(".restartmsg")
