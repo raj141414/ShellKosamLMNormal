@@ -99,19 +99,19 @@ async def get_user_settings(from_user):
     buttons.ibutton("Close", f"userset {user_id} close")
 
     text = f"""
-<u>ℹ User Settings of {name}</u>
+<u> User Settings of {name}</u>
 
 ❆TG Premium Status : </code> <b>{IS_PREMIUM_USER}</b>
-┌» Rclone Config : </code> <b>{rccmsg}</b>
-├» Leech Type : </code> <b>{ltype}</b>
-├» Leech Prefix : </code> <b>{escape(lprefix)}</b>
-├» Leech Split Size : </code> <b>{split_size}</b>
-├» User Dump : </code> <b>{user_dump}</b>
-├» Equal Splits : </code> <b>{equal_splits}</b>
-├» Thumbnail : </code> <b>{thumbmsg}</b>
-├» Media Group : </code> <b>{media_group}</b>
-├» YT-DLP Options : </code> <b>{escape(ytopt)}</b>
-└» Remove Unwanted : </code> <b>{escape(lremname)}</b>
+┌ Rclone Config : </code> <b>{rccmsg}</b>
+├ Leech Type : </code> <b>{ltype}</b>
+├ Leech Prefix : </code> <b>{escape(lprefix)}</b>
+├ Leech Split Size : </code> <b>{split_size}</b>
+├ User Dump : </code> <b>{user_dump}</b>
+├ Equal Splits : </code> <b>{equal_splits}</b>
+├ Thumbnail : </code> <b>{thumbmsg}</b>
+├ Media Group : </code> <b>{media_group}</b>
+├ YT-DLP Options : </code> <b>{escape(ytopt)}</b>
+└ Remove Unwanted : </code> <b>{escape(lremname)}</b>
 """
     return text, buttons.build_menu(2)
 
@@ -125,7 +125,7 @@ async def user_settings(_, message):
     from_user = message.from_user
     handler_dict[from_user.id] = False
     msg, button = await get_user_settings(from_user)
-    reply_message = await sendMessage(message, msg, button, photo='IMAGES')
+    reply_message = await sendMessage(message, msg, button, photo='https://graph.org/file/d1d6edc5897a373dcfe8a.jpg')
     await auto_delete_message(message, reply_message)
 
 @new_thread
@@ -289,7 +289,7 @@ async def edit_user_settings(client, query):
             buttons.ibutton("Delete Thumbnail", f"userset {user_id} dthumb")
         buttons.ibutton("Back", f"userset {user_id} back")
         buttons.ibutton("Close", f"userset {user_id} close")
-        await editMessage(message, 'Send a photo to save it as custom thumbnail. Timeout: 60 sec', buttons.build_menu(1))
+        await editMessage(message, 'Send a image to set as a custom thumbnail. waiting: 60 sec', buttons.build_menu(1))
         pfunc = partial(set_thumb, pre_event=query)
         await event_handler(client, query, pfunc, True)
     elif data[2] == 'yto':
