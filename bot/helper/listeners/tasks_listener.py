@@ -404,7 +404,7 @@ class MirrorLeechListener:
         lmsg += f'\n<b>├ cc</b>: <i>{self.tag}</i>'
         _msg = '' if rclonePath == '' else f'\n\n<code>Path            </code>: {rclonePath}'
         msg_ = '\n\n<b><i>Links has been sent in your DM.</i></b>'
-        reply_message = await sendMessage(self.massage, msg,  photo='https://graph.org/file/bb0c305a3c575f7529bbf.jpg')
+        reply_message = await sendMessage(gmsg, msg,  photo='https://graph.org/file/bb0c305a3c575f7529bbf.jpg')
         buttons = ButtonMaker()
         if self.isLeech:
             msg += f'\n└ Total Files</code>: {folders}\n'
