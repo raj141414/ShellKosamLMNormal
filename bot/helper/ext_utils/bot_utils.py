@@ -228,7 +228,7 @@ def get_readable_message():
     msg += f"\n<b>CPU:</b> {cpu_percent()}% | <b>RAM:</b> {virtual_memory().percent}% | <b>Free</b>: {get_readable_file_size(disk_usage(config_dict['DOWNLOAD_DIR']).free)}</code>"
     msg += f"\n<b>DL</b>: {get_readable_file_size(dl_speed)}/s</code> | <b>UP</b>: {get_readable_file_size(up_speed)}/s</code> | <b>Up</b>: {get_readable_time(time() - botStartTime)}</code>"
     remaining_time = 86400 - (time() - botStartTime)
-    res_time = '⚠️ ANYTIME ⚠️' if remaining_time <= 0 else get_readable_time(remaining_time)
+    res_time = 'System restrat soon' if remaining_time <= 0 else get_readable_time(remaining_time)
     if remaining_time <= 3600:
         msg += f"\n<b>Bot Restarts In:</b> <code>{res_time}</code>"
     return msg, button
