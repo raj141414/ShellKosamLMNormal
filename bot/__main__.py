@@ -93,7 +93,7 @@ async def stats(_, message):
             f'<b>└ Total : </b> {total}</code> | <b>Free : </b> {free}</code>\n\n' \
             f'<b>⥣ UL : </b> {sent}</code> | <b>⥥ DL:</b> {recv}</code>\n\n' \
           
-    reply_message = await sendMessage(message, stats, photo='https://graph.org/file/03c59fa83ff673298bbf5.jpg')
+    reply_message = await sendMessage(message, stats, photo='https://graph.org/file/7613e27748958f858e2e1.jpg')
     await auto_delete_message(message, reply_message)
 
 
@@ -120,7 +120,7 @@ async def start(_, message):
         start_string = 'Sorry, you cant use me personal....\n' \
                        'By @imthemetaverse.\n' \
                        'Thank You'
-    await sendMessage(message, start_string, photo='https://graph.org/file/98a6d4c71e49c952f5695.jpg')
+    await sendMessage(message, start_string, photo='https://graph.org/file/7613e27748958f858e2e1.jpg')
 
 
 async def restart(_, message):
@@ -232,7 +232,7 @@ async def restart_notification():
     async def send_incompelete_task_message(cid, msg):
         try:
             if msg.startswith('Restarted Successfully!'):
-                await bot.edit_message_text(chat_id=chat_id, message_id=msg_id, text='Restarted Successfully!')
+                await bot.edit_message_text(chat_id=chat_id, message_id=msg_id, text='System Restarted !')
                 await bot.send_message(chat_id, msg, disable_web_page_preview=True, reply_to_message_id=msg_id)
                 await aioremove(".restartmsg")
             else:
