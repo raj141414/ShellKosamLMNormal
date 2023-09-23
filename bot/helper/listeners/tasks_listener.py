@@ -404,6 +404,7 @@ class MirrorLeechListener:
         lmsg += f'\n<b>├ cc</b>: <i>{self.tag}</i>'
         _msg = '' if rclonePath == '' else f'\n\n<code>Path            </code>: {rclonePath}'
         msg_ = '\n\n<b><i>Links has been sent in your DM.</i></b>'
+        reply_message = await sendMessage(message, msg,  photo='https://graph.org/file/bb0c305a3c575f7529bbf.jpg')
         buttons = ButtonMaker()
         if self.isLeech:
             msg += f'\n└ Total Files</code>: {folders}\n'
@@ -552,7 +553,7 @@ class MirrorLeechListener:
         msg += f"\n\n┌  Reason  </code>: {escape(str(error))}"
         msg += f"\n├ Elapsed </code>: {get_readable_time(time() - self.extra_details['startTime'])}"
         msg += f"\n└ Action  </code>: {self.extra_details['mode']}"
-        reply_message = await sendMessage(self.message, msg, button)
+        reply_message = await sendMessage(self.message, msg, button, photo='https://graph.org/file/3d4ff65b7058fe6980a65.jpg')
         if self.logMessage:
             await sendMessage(self.logMessage, msg, button)
         if count == 0:
@@ -596,7 +597,7 @@ class MirrorLeechListener:
         msg = f"{self.tag} {escape(str(error))}"
         msg += f"\n┌ Elapsed </code>: {get_readable_time(time() - self.extra_details['startTime'])}"
         msg += f"\n└  Upload  </code>: {self.extra_details['mode']}"
-        reply_message = await sendMessage(self.message, msg)
+        reply_message = await sendMessage(self.message, msg, photo='https://graph.org/file/3d4ff65b7058fe6980a65.jpg')
         if self.logMessage:
             await sendMessage(self.logMessage, msg)
         if count == 0:
