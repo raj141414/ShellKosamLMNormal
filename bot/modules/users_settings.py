@@ -125,7 +125,7 @@ async def user_settings(_, message):
     from_user = message.from_user
     handler_dict[from_user.id] = False
     msg, button = await get_user_settings(from_user)
-    reply_message = await sendMessage(message, msg, button, photo='https://graph.org/file/d1d6edc5897a373dcfe8a.jpg')
+    reply_message = await sendMessage(message, msg, button, photo='https://graph.org/file/2910a73df6c36eec130c7.jpg')
     await auto_delete_message(message, reply_message)
 
 @new_thread
