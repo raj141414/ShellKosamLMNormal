@@ -32,7 +32,7 @@ async def mirror_status(_, message):
         msg += '\n\n I m free now.. \n▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬'
         msg += f"\n<b>┌ CPU</b>: {cpu_percent()}% ║ <b> FREE</b>: {free}" \
                f"\n<b>└ RAM</b>: {virtual_memory().percent}% ║ <b> UP</b>: {currentTime}"
-        reply_message = await sendMessage(message, photo='https://graph.org/file/2d75b875ec31fccbeec90.jpg')
+        reply_message = await sendMessage(message, status, photo='https://graph.org/file/2d75b875ec31fccbeec90.jpg')
         await auto_delete_message(message, reply_message)
     else:
         await sendStatusMessage(message)
