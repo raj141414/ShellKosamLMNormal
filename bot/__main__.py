@@ -147,7 +147,7 @@ async def ping(_, message):
     await editMessage(reply, f'{ping_time} ms')
 
 async def log(_, message):
-    await sendFile(message, 'Z_Logs.txt')
+    await sendFile(message, 'metaLogs.txt')
 
 help_string = f'''
 <b>NOTE: Click on any CMD to see more detalis.</b>
