@@ -40,6 +40,6 @@ class _BotCommands:
         self.RmdbCommand = f'rmdb{CMD_SUFFIX}'
         self.MLocalUploadCommand = f'mupload{CMD_SUFFIX}'
         self.LLocalUploadCommand = f'lupload{CMD_SUFFIX}'
-        self.vtoolsCommand = f'vtl{CMD_SUFFIX}'
+        self.vid_toolsCommand = f'vtl{CMD_SUFFIX}'
 
 BotCommands = _BotCommands()
