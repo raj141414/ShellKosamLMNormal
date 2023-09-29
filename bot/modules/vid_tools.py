@@ -47,4 +47,4 @@ bot.polling()
 
 
 
-bot.add_handler(MessageHandler(vid_tools, filters=command(BotCommands.vidtoolsCommand) & CustomFilters.authorized))
+bot.add_handler(MessageHandler(vid_tools, filters=command(BotCommands.VideotoolsCommand  & CustomFilters.authorized))
