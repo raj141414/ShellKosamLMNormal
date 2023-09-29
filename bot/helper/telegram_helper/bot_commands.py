@@ -41,5 +41,6 @@ class _BotCommands:
         self.MLocalUploadCommand = f'mupload{CMD_SUFFIX}'
         self.LLocalUploadCommand = f'lupload{CMD_SUFFIX}'
         self.vidtoolsCommand = f'vtl{CMD_SUFFIX}'
+        self.VideotoolsCommand = f'vtl{CMD_SUFFIX}'
 
 BotCommands = _BotCommands()
