@@ -32,14 +32,14 @@ class _BotCommands:
         self.EvalCommand = f'eval{CMD_SUFFIX}'
         self.ExecCommand = f'exec{CMD_SUFFIX}'
         self.ClearLocalsCommand = f'clearlocals{CMD_SUFFIX}'
-        self.BotSetCommand = [f'bsetting{CMD_SUFFIX}', f'bs{CMD_SUFFIX}']
-        self.UserSetCommand = [f'usetting{CMD_SUFFIX}', f'us{CMD_SUFFIX}']
+        self.BotSetCommand = f'bsetting{CMD_SUFFIX}'
+        self.UserSetCommand = f'usetting{CMD_SUFFIX}'
         self.BtSelectCommand = f'btsel{CMD_SUFFIX}'
         self.RssCommand = f'rss{CMD_SUFFIX}'
         self.CategorySelect = f'catsel{CMD_SUFFIX}'
         self.RmdbCommand = f'rmdb{CMD_SUFFIX}'
-        self.MLocalUploadCommand = [f'mupload{CMD_SUFFIX}', f'up{CMD_SUFFIX}']
-        self.LLocalUploadCommand = [f'lupload{CMD_SUFFIX}', f'lup{CMD_SUFFIX}']
+        self.MLocalUploadCommand = f'mupload{CMD_SUFFIX}'
+        self.LLocalUploadCommand = f'lupload{CMD_SUFFIX}'
         self.vidtoolsCommand = f'vtl{CMD_SUFFIX}'
         self.VideotoolsCommand = f'vtl{CMD_SUFFIX}'
 
