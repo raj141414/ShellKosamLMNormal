@@ -2,7 +2,7 @@ from hashlib import sha1
 from os import path, remove
 from re import search
 
-from bencoding import bdecode, bencode
+
 
 from bot import DATABASE_URL, LOGGER, config_dict
 from bot.helper.ext_utils.bot_utils import (check_user_tasks, checking_access,
