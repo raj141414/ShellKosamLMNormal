@@ -93,7 +93,7 @@ async def stats(_, message):
             f'<b>└ Total : </b> {total}</code> | <b>Free : </b> {free}</code>\n\n' \
             f'<b>⥣ UL : </b> {sent}</code> | <b>⥥ DL:</b> {recv}</code>\n\n' \
           
-    reply_message = await sendMessage(message, stats, photo='https://graph.org/file/7613e27748958f858e2e1.jpg')
+    reply_message = await sendMessage(message, stats, photo='https://graph.org/file/6b56e482d9865a49ed578.jpg')
     await auto_delete_message(message, reply_message)
 
 
@@ -115,12 +115,12 @@ async def start(_, message):
     elif config_dict['DM_MODE']:
         start_string = 'Bot Started.\n' \
                        'Now I can send your stuff directoly to you.\n' \
-                       'Owner: @imthemetaverse'
+                       'Owner: @Blaster_Originals'
     else:
         start_string = 'Sorry, you cant use me personal....\n' \
-                       'By @imthemetaverse.\n' \
+                       'By @Blaster_Originals.\n' \
                        'Thank You'
-    await sendMessage(message, start_string, photo='https://graph.org/file/7613e27748958f858e2e1.jpg')
+    await sendMessage(message, start_string, photo='https://graph.org/file/6b56e482d9865a49ed578.jpg')
 
 
 async def restart(_, message):
