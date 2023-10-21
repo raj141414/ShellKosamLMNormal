@@ -154,7 +154,7 @@ class TgUploader:
                 new_path = ospath.join(dirpath, f"{name}{ext}")
                 await aiorename(self.__up_path, new_path)
                 self.__up_path = new_path
-        return cap_mono
+        return cap_bold
 
     async def __get_input_media(self, subkey, key, msg_list=None):
         rlist = []
@@ -226,7 +226,7 @@ class TgUploader:
                         continue
                     if self.__is_cancelled:
                         return
-                    cap_mono = await self.__prepare_file(file_, dirpath)
+                    cap_bold = await self.__prepare_file(file_, dirpath)
                     if self.__last_msg_in_group:
                         group_lists = [x for v in self.__media_dict.values()
                                        for x in v.keys()]
@@ -238,7 +238,7 @@ class TgUploader:
                     self.__last_msg_in_group = False
                     self.__last_uploaded = 0
                     await self.__switching_client(f_size)
-                    await self.__upload_file(cap_mono, file_)
+                    await self.__upload_file(cap_bold, file_)
                     if self.__is_cancelled:
                         return
                     if not self.__is_corrupted and (self.__listener.isSuperGroup or config_dict['DUMP_CHAT_ID']):
