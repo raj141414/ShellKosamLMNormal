@@ -128,7 +128,7 @@ class TgUploader:
                 await aiorename(self.__up_path, new_path)
                 self.__up_path = new_path
         else:
-            cap_mono = f"<i>{file_}</i>"
+            cap_bold = f"<b>{file_}</b>"
         if len(file_) > 60:
             if is_archive(file_):
                 name = get_base_name(file_)
@@ -322,7 +322,7 @@ class TgUploader:
 
     @retry(wait=wait_exponential(multiplier=2, min=4, max=8), stop=stop_after_attempt(3),
            retry=retry_if_exception_type(Exception))
-    async def __upload_file(self, cap_mono, file, force_document=False):
+    async def __upload_file(self, cap_bold, file, force_document=False):
         if self.__thumb is not None and not await aiopath.exists(self.__thumb):
             self.__thumb = None
         thumb = self.__thumb
@@ -345,7 +345,7 @@ class TgUploader:
                 self.__sent_msg = await self.__sent_msg.reply_document(document=self.__up_path,
                                                                        quote=True,
                                                                        thumb=thumb,
-                                                                       caption=cap_mono,
+                                                                       caption=cap_bold,
                                                                        force_document=True,
                                                                        reply_markup=self.__button,
                                                                        disable_notification=True,
@@ -377,7 +377,7 @@ class TgUploader:
                     return
                 self.__sent_msg = await self.__sent_msg.reply_video(video=self.__up_path,
                                                                     quote=True,
-                                                                    caption=cap_mono,
+                                                                    caption=cap_bold,
                                                                     duration=duration,
                                                                     width=width,
                                                                     height=height,
@@ -393,7 +393,7 @@ class TgUploader:
                     return
                 self.__sent_msg = await self.__sent_msg.reply_audio(audio=self.__up_path,
                                                                     quote=True,
-                                                                    caption=cap_mono,
+                                                                    caption=cap_bold,
                                                                     duration=duration,
                                                                     performer=artist,
                                                                     title=title,
@@ -407,7 +407,7 @@ class TgUploader:
                     return
                 self.__sent_msg = await self.__sent_msg.reply_photo(photo=self.__up_path,
                                                                     quote=True,
-                                                                    caption=cap_mono,
+                                                                    caption=cap_bold,
                                                                     reply_markup=self.__button,
                                                                     disable_notification=True,
                                                                     progress=self.__upload_progress)
