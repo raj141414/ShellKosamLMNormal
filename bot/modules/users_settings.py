@@ -125,7 +125,7 @@ async def user_settings(_, message):
     from_user = message.from_user
     handler_dict[from_user.id] = False
     msg, button = await get_user_settings(from_user)
-    reply_message = await sendMessage(message, msg, button, photo='https://graph.org/file/2910a73df6c36eec130c7.jpg')
+    reply_message = await sendMessage(message, msg, button, photo='https://graph.org/file/b660408e5786d36acb9a9.jpg')
     await auto_delete_message(message, reply_message)
 
 @new_thread
@@ -394,11 +394,11 @@ Check all yt-dlp api options from this <a href='https://github.com/yt-dlp/yt-dlp
         rmsg = f'''
 Send Leech Prefix. Timeout: 60 sec
 Examples:
-1. <code>{escape('<b>meta_verse</b>')}</code> 
+1. <code>{escape('<b>Blaster_Originals</b>')}</code> 
 This will give output of:
 <b>meta_verser</b>  <code>69MB.bin</code>.
 
-2. <code>{escape('<code>meta_verse</code>')}</code> 
+2. <code>{escape('<code>Blaster_Originals</code>')}</code> 
 This will give output of:
 <code>meta_verse</code> <code>69MB.bin</code>.
 
