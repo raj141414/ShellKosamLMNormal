@@ -456,6 +456,8 @@ async def set_commands(client):
             BotCommand(f'{BotCommands.HelpCommand}', 'Get detailed help'),
             BotCommand(f'{BotCommands.MLocalUploadCommand}', 'Mirror Upload From Shell To Drive'),
             BotCommand(f'{BotCommands.LLocalUploadCommand}', 'Leech From Shell To Telegram'),
+            BotCommand(f'{BotCommands.BotSetCommand}', 'Bot Settings'),
+            BotCommand(f'{BotCommands.ShellCommand}', 'Run Commands In Shell'),
         ])
 
 
