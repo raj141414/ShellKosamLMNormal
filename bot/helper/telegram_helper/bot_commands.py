@@ -24,7 +24,7 @@ class _BotCommands:
         self.AddSudoCommand = f'addsudo{CMD_SUFFIX}'
         self.RmSudoCommand = f'rmsudo{CMD_SUFFIX}'
         self.PingCommand = [f'ping{CMD_SUFFIX}','p']
-        self.RestartCommand = [f'restart{CMD_SUFFIX}', 'restartall']
+        self.RestartCommand = [f'restart{CMD_SUFFIX}', f'restartall{CMD_SUFFIX}']
         self.StatsCommand = [f'stats{CMD_SUFFIX}', 's']
         self.HelpCommand = f'help{CMD_SUFFIX}'
         self.LogCommand = f'log{CMD_SUFFIX}'
