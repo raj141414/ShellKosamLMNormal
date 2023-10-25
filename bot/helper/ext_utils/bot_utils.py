@@ -454,6 +454,8 @@ async def set_commands(client):
             BotCommand(f'{BotCommands.SearchCommand}', 'Search in Torrent'),
             BotCommand(f'{BotCommands.UserSetCommand}', 'Users settings'),
             BotCommand(f'{BotCommands.HelpCommand}', 'Get detailed help'),
+            BotCommand(f'{BotCommands.MLocalUploadCommand}', 'Mirror Upload From Shell To Drive'),
+            BotCommand(f'{BotCommands.LLocalUploadCommand}', 'Leech From Shell To Telegram'),
         ])
 
 
