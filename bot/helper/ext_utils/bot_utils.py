@@ -458,7 +458,6 @@ async def set_commands(client):
             BotCommand(f'{BotCommands.LLocalUploadCommand}', 'Leech From Shell To Telegram'),
             BotCommand(f'{BotCommands.BotSetCommand}', 'Bot Settings'),
             BotCommand(f'{BotCommands.ShellCommand}', 'Run Commands In Shell'),
-            BotCommand(f'{BotCommands.RestartCommand}', 'Restart The Bot'),
         ])
 
 
